@@ -40,7 +40,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    using (var scope = app.Services.CreateScope())
+    /*using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
@@ -48,7 +48,7 @@ if (app.Environment.IsDevelopment())
         {
             dbContext.AddAdminApiKey(app.Configuration["MainApiKey"]);
         }
-    }
+    }*/
     
     app.UseSwagger();
     app.UseSwaggerUI(c =>

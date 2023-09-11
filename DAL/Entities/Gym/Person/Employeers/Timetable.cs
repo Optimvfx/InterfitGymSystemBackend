@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DAL.Entities.Interfaces;
 using DAL.Entities.Structs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace DAL.Entities.Gym.Person.Employeers;
 
 [Table("Timetables")]
-public class Timetable
+public class Timetable : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

@@ -8,6 +8,7 @@ using DAL.Entities.Gym.Person;
 using DAL.Entities.Gym.Person.Clients;
 using DAL.Entities.Gym.Person.Employeers;
 using DAL.Entities.Gym.SalesLogic;
+using DAL.Entities.Primary;
 using DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,9 @@ namespace DAL;
 
 public class ApplicationDbContext : DbContext
 {
+    public DbSet<Card> Cards => Set<Card>();
+    public DbSet<ApiKey> Keys => Set<ApiKey>();
+    
     #region Accesses
 
     public DbSet<Access> Accesses => Set<Access>();
@@ -81,11 +85,6 @@ public class ApplicationDbContext : DbContext
     
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
-    }
-
-    public bool IsInitialized()
-    {
-        return Terminals.Any();
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)

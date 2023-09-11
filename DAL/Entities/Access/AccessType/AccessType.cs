@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Access.AccessType;
 
 [Table("AccessTypes")]
-public class AccessType
+public class AccessType : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
 

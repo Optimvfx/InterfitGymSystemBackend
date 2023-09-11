@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Guarantee;
 
-public abstract class GuaranteePossible
+public abstract class GuaranteePossible : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
  

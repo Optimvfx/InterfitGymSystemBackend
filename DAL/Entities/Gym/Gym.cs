@@ -13,6 +13,8 @@ namespace DAL.Entities.Gym;
 [Table("Gyms")]
 public class Gym
 {
+    [Key] public Guid Id { get; set; }
+    
     [Required] public string Title { get; set; }
     
     //Cards of all personal trainers and clients

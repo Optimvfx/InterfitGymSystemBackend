@@ -231,7 +231,6 @@ C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\Microso
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Forms.dll
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\System.Security.Cryptography.Xml.dll
-C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\obj\Debug\net7.0\Common.csproj.AssemblyReference.cache
@@ -244,3 +243,5 @@ C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\obj\Debug\net7.0\Common.
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\obj\Debug\net7.0\refint\Common.dll
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\obj\Debug\net7.0\Common.pdb
 C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\obj\Debug\net7.0\ref\Common.dll
+C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\DAL.dll
+C:\Users\maxim\RiderProjects\GymCarSystemBackend\Common\bin\Debug\net7.0\DAL.pdb

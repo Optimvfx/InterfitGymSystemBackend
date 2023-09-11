@@ -30,8 +30,6 @@
       </Reference>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Consts\" />
-    </ItemGroup>
+
 
 </Project>

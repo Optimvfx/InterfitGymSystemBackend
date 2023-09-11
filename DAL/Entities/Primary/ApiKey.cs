@@ -4,13 +4,14 @@ using System.Diagnostics.CodeAnalysis;
 using DAL.Entities.Access;
 using DAL.Entities.Access.AccessType;
 using DAL.Entities.Gym.SalesLogic;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Primary;
 
 [Table("ApiKeys")]
-public class ApiKey
+public class ApiKey : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     
@@ -25,8 +26,8 @@ public class ApiKey
     [Required] public Guid AccessId { get; set; }
     public virtual Access.Access Access { get; set; }
     
-    [Required] public Guid AuthorId { get; set; }
-    public virtual ApiAdministrator Author { get; set; }
+    [AllowNull] public Guid? AuthorId { get; set; }
+    public virtual ApiAdministrator? Author { get; set; }
 }
 
 public class ApiKeyTypeConfiguration : IEntityTypeConfiguration<ApiKey>

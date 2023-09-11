@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Guarantee;
 
 [Table("StoragePlaces")]
-public class StoragePlace
+public class StoragePlace : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

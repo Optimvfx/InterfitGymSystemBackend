@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.SalesLogic;
 
 [Table("AbbonitureProfiles")]
-public class AbbonitureProfile
+public class AbbonitureProfile : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

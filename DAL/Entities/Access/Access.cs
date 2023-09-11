@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.Entities.Access.AccessType;
+using DAL.Entities.Interfaces;
 using DAL.Entities.Primary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace DAL.Entities.Access;
 
 [Table("Access")]
-public class Access
+public class Access : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
 

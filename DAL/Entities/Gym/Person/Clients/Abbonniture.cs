@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Person.Clients;
 
 [Table("Abbonnitures")]
-public class Abbonniture
+public class Abbonniture : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

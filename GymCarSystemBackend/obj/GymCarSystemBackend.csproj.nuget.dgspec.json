@@ -86,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\CCL.csproj": {
+    "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\CCL.csproj",
-        "projectName": "CCL",
-        "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\CCL.csproj",
+        "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
+        "projectName": "CLL",
+        "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
         "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\obj\\",
+        "outputPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -193,7 +193,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -360,8 +364,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\CCL.csproj": {
-                "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\CCL.csproj"
+              "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj": {
+                "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj"
               },
               "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj": {
                 "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj"
@@ -379,6 +383,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AspNetCoreRateLimit": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[7.0.10, )"

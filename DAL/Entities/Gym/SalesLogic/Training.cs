@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.Entities.Gym.Person;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.SalesLogic;
 
 [Table("Trainings")]
-public class Training
+public class Training : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

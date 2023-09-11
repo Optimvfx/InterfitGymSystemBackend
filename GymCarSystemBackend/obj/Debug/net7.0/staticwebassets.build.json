@@ -1,20 +1,20 @@
 {
   "Version": 1,
-  "Hash": "2wO5tX1HCiEdxDx6+zyOqHZ/7LoBy9ImICqAeQGv+VM=",
+  "Hash": "D7Beh0I02GZ2DcxnIBbxe+Xq78AN1R+279J825Ut17E=",
   "Source": "GymCarSystemBackend",
   "BasePath": "_content/GymCarSystemBackend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CCL\\CCL.csproj",
+      "Identity": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
       "Version": 2,
-      "Source": "CCL",
+      "Source": "CLL",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],

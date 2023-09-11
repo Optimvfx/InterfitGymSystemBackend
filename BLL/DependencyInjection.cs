@@ -13,9 +13,9 @@ public static class DependencyInjection
         ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
     {
         services.AddWithCustomLifeTime<AuthService>(serviceLifetime);
-
+        services.AddWithCustomLifeTime<AdminService>(serviceLifetime);
+        
         services.AddAutoMapper(typeof(BaseAutoMapperProfile).Assembly);
-        services.AddMemoryCache();
         
         return services;
     }

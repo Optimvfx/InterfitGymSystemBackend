@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DAL.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Hardware;
 
 [Table("Consumables")]
-public class Consumable
+public class Consumable : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

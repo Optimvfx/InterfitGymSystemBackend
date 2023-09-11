@@ -17,7 +17,7 @@ public class ApiAdministratorTypeConfiguration : IEntityTypeConfiguration<ApiAdm
     {
         builder.HasMany(a => a.CreatedApiKeys)
             .WithOne(a => a.Author)
-            .HasForeignKey(a => a.Author)
+            .HasForeignKey(a => a.AuthorId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

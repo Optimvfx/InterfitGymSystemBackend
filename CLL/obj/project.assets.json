@@ -2699,11 +2699,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\CLL\\CLL.csproj",
       "projectName": "CLL",
-      "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
+      "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\CLL\\CLL.csproj",
       "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\obj\\",
+      "outputPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\CLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2718,8 +2718,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\BLL\\BLL.csproj": {
-              "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\BLL\\BLL.csproj"
+            "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\BLL\\BLL.csproj"
             }
           }
         }

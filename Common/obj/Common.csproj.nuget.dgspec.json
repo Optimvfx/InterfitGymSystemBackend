@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\Common\\Common.csproj": {}
+    "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\Common\\Common.csproj": {
+    "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\Common\\Common.csproj",
+        "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\Common\\Common.csproj",
+        "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\Common\\obj\\",
+        "outputPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj"
+              "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj"
               }
             }
           }
@@ -79,14 +79,14 @@
         }
       }
     },
-    "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj": {
+    "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\DAL.csproj",
+        "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\DAL\\obj\\",
+        "outputPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config"

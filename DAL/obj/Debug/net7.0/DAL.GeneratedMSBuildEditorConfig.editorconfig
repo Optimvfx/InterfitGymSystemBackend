@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DAL
-build_property.ProjectDir = C:\Users\maxim\RiderProjects\GymCarSystemBackend\DAL\
+build_property.ProjectDir = C:\Users\maxim\RiderProjects\InterfitGymSystemBackend\DAL\

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l2AONDwb37zcCh9jm9PdAjBb/5q+cls4xB8k8qYpY1TYNoPmlqKwS/bIFDmggJgJFlzsaO3hGtjiztGlDoMRVw==",
+  "dgSpecHash": "r4nbO9FBD9GZ8axkxqpbIVUsxuG7A6q05T8pyD61AI6a3oNb8uS63w+W3BGXhmLysvqLQGIIiPdv1+nP+eFX5A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
+  "projectFilePath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\CLL\\CLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maxim\\.nuget\\packages\\antlr\\3.4.1.9004\\antlr.3.4.1.9004.nupkg.sha512",
     "C:\\Users\\maxim\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",

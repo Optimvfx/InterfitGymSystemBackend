@@ -1,6 +1,8 @@
+using System.Runtime.InteropServices.ComTypes;
 using BLL.Services.DataCoder;
 using CLL.ControllersLogic;
 using GymCarSystemBackend.Controllers.Base;
+using GymCarSystemBackend.ValidationAttributes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
@@ -12,15 +14,16 @@ namespace GymCarSystemBackend.Controllers;
 [Route("api/admin")]
 public class AdminApiController : BaseAdminController
 {
-    public AdminApiController(IDataCoder<Guid, string> guidCryptor, AuthControllerLogic authController) : base(guidCryptor, authController)
+    public AdminApiController(IDataCoder<Guid, string> guidCryptor, AuthLogic auth) : base(guidCryptor, auth)
     {
     }
 
     [HttpGet("addApiKey")]
     [EnableRateLimiting("KeyCreationLimiting")]
-    public async Task<IActionResult> GetMyApiKey()
+    public async Task<IActionResult> GetMyId()
     {
         var id = await GetAdminId();
-        var crypted = EncryptGuid(id);
-        return Ok(new { id, crypted });
-    }}
+        
+        return Ok(new { id = EncryptGuid(id) });
+    }
+}

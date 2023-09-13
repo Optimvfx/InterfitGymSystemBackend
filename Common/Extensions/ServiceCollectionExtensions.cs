@@ -32,4 +32,20 @@ public static class ServiceCollectionExtensions
 
         return serviceCollection;
     }
+
+    public static IServiceCollection AddWithCustomLifeTime<TBase, TValue>(this IServiceCollection serviceCollection,
+        ServiceLifetime serviceLifetime)
+        where TBase : class
+        where TValue : class, TBase
+
+    {
+        if (serviceLifetime == ServiceLifetime.Singleton)
+            serviceCollection.AddSingleton<TBase, TValue>();
+        else if (serviceLifetime == ServiceLifetime.Scoped)
+            serviceCollection.AddScoped<TBase, TValue>();
+        else if (serviceLifetime == ServiceLifetime.Transient)
+            serviceCollection.AddTransient<TBase, TValue>();
+
+        return serviceCollection;
+    }
 }

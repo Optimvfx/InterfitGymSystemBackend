@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "D7Beh0I02GZ2DcxnIBbxe+Xq78AN1R+279J825Ut17E=",
+  "Hash": "Lli1xgHSo9T8H0JKezdrBX0se+Wp+oofTomU7Nu7Sfo=",
   "Source": "GymCarSystemBackend",
   "BasePath": "_content/GymCarSystemBackend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\maxim\\RiderProjects\\GymCarSystemBackend\\CLL\\CLL.csproj",
+      "Identity": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\CLL\\CLL.csproj",
       "Version": 2,
       "Source": "CLL",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",

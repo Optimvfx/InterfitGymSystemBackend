@@ -11,7 +11,7 @@ namespace DAL.Entities.Gym.Person;
 public class Employee : Person
 {
     [Required] public Guid TimetableId { get; set; }
-    public virtual Timetable Timetable { get; set; }
+    public virtual TimetableEntity Timetable { get; set; }
     
     [Required] public Guid PositionId { get; set; }
     public virtual Position Position { get; set; }

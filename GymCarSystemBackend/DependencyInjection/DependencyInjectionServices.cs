@@ -8,6 +8,7 @@ using GymCarSystemBackend.Controllers.AuthorizationHandlers;
 using GymCarSystemBackend.Extensions;
 using GymCarSystemBackend.Middlewares.ErrorHandler;
 using GymCarSystemBackend.Middlewares.ErrorHandler.PossibleErrorHandler;
+using GymCarSystemBackend.Singleton;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GymCarSystemBackend.DependencyInjection;
@@ -19,15 +20,28 @@ public static class DependencyInjectionServices
     public static IServiceCollection AddSubServices(this IServiceCollection services,
         ConfigurationManager configuration)
     {
-        var key = DependencyInjectionJwt.GetSymmetricSecurityKey(configuration);
-        services.AddTransient<ITokenService, StandartTokenService>((s) => new StandartTokenService(key, TimeSpan.FromMinutes(200), Claims.UserClaim));
-
-        var byteCoderKey = Encoding.UTF8.GetBytes(configuration[ByteCoderKey]);
-        services.AddTransient<IDataCoder<Guid, string>, GuidStringCoder>((s) => 
-            new GuidStringCoder(
-                new ByteStringCoder(), 
-                new ByteDataCoder(byteCoderKey)));
+        services.AddTokenService(configuration);
+        services.AddGuidCoderService(configuration);
         
         return services;
+    }
+
+    private static void AddTokenService(this IServiceCollection services, ConfigurationManager configuration)
+    {
+        var key = DependencyInjectionJwt.GetSymmetricSecurityKey(configuration);
+        services.AddTransient<ITokenService, StandartTokenService>((s) => new StandartTokenService(key, TimeSpan.FromMinutes(200), Claims.UserClaim));
+    }
+    
+    private static void AddGuidCoderService(this IServiceCollection services, ConfigurationManager configuration)
+    {
+        var coderKey = Encoding.UTF8.GetBytes(configuration[ByteCoderKey]);
+        var byteCoder = new ByteDataCoder(coderKey);
+        var coder = new GuidStringCoder(
+            new ByteStringCoder(),
+            byteCoder);
+        
+        services.AddSingleton<IDataCoder<Guid, string>>((s) => coder);
+        
+        GuidCoderSingleton.Init(coder);
     }
 }

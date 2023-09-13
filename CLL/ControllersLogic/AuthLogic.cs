@@ -1,21 +1,22 @@
 ﻿using BLL.Services;
 using BLL.Services.TokenService;
+using CLL.ControllersLogic.Interface;
 using Common.Models;
 
 namespace CLL.ControllersLogic;
 
-public class AuthControllerLogic
+public class AuthLogic : IAuthLogic
 {
     private readonly AuthService _authService;
     private readonly ITokenService _tokenService;
 
-    public AuthControllerLogic(AuthService authService, ITokenService tokenService)
+    public AuthLogic(AuthService authService, ITokenService tokenService)
     {
         _authService = authService;
         _tokenService = tokenService;
     }
 
-    public async Task<Result<string>> TryAuthenticate(string apiKey)
+    public async Task<Result<string>> TryGetJwt(string apiKey)
     {
         if (await _authService.AnyAccessByApiKey(apiKey) == false)
             return new();
@@ -26,15 +27,12 @@ public class AuthControllerLogic
         return new(token);
     }
 
-    public async Task<bool> AnyAdminByAccess(Guid id)
+    public async Task<Result<Guid>> TryGetAdminIdByAccess(Guid id)
     {
-        return await _authService.AnyAdminByAccess(id);
-        
-        
-    }
+        if (await _authService.AnyAdminByAccess(id) == false)
+            return false;
 
-    public async Task<Guid> GetAdminByAccess(Guid id)
-    {
-        return await _authService.GetAdminIdByAccess(id);
+        var admin = await _authService.GetAdminIdByAccess(id);
+        return new Result<Guid>(admin);
     }
 }

@@ -52,7 +52,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Position> Positions => Set<Position>();
     public DbSet<TerminalAdministrator> TerminalAdministrators => Set<TerminalAdministrator>();
-    public DbSet<Timetable> Timetables => Set<Timetable>();
+    public DbSet<TimetableEntity> Timetables => Set<TimetableEntity>();
     public DbSet<Vacation> Vacations => Set<Vacation>();
 
     #endregion

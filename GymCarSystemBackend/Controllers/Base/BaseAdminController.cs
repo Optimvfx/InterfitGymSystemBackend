@@ -1,6 +1,7 @@
 using BLL.Services.DataCoder;
 using CLL.Consts;
 using CLL.ControllersLogic;
+using CLL.ControllersLogic.Interface;
 using Common.Convertors;
 using Common.Exceptions.User;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,11 @@ namespace GymCarSystemBackend.Controllers.Base;
 
 public abstract class BaseAdminController : BaseController
 {
-    private readonly AuthControllerLogic _authController;
+    private readonly IAuthLogic _auth;
 
-    protected BaseAdminController(IDataCoder<Guid, string> guidCryptor, AuthControllerLogic authController) : base(guidCryptor)
+    protected BaseAdminController(IDataCoder<Guid, string> guidCryptor, IAuthLogic auth) : base(guidCryptor)
     {
-        _authController = authController;
+        _auth = auth;
     }
 
     protected async Task<Guid> GetAdminId()
@@ -22,10 +23,9 @@ public abstract class BaseAdminController : BaseController
         
         if (claims.TryGetClaimValue(Claims.UserClaim, out Guid id))
         {
-            if (await _authController.AnyAdminByAccess(id))
-            {
-                return await _authController.GetAdminByAccess(id);
-            }
+            var result = await _auth.TryGetAdminIdByAccess(id);
+            if (result)
+                return result.Value;
         }
 
         throw new InvalidUserIdException();

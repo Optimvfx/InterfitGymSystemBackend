@@ -19,6 +19,19 @@ public struct Result<T>
 
     public bool IsSuccess() => ResultStatus == ResultStatusCode.Success;
     public bool IsFailure() => ResultStatus == ResultStatusCode.Failure;
+    
+    public static implicit operator bool(Result<T> result)
+    {
+        return result.IsSuccess();
+    }
+    
+    public static implicit operator Result<T>(bool value)
+    {
+        if (value == true)
+            throw new ArgumentException();
+        
+        return new Result<T>();
+    }
 }
 
 public enum ResultStatusCode

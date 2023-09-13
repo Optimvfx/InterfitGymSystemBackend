@@ -10,7 +10,6 @@ namespace GymCarSystemBackend.Controllers.Base;
 public abstract class BaseController : Controller
 {
     private IDataCoder<Guid, string> _guidCryptor;
-    
 
     protected BaseController(IDataCoder<Guid, string> guidCryptor)
     {

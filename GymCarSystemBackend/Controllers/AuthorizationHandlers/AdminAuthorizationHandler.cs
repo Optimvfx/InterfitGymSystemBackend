@@ -9,11 +9,11 @@ namespace GymCarSystemBackend.Controllers.AuthorizationHandlers;
 
 public class AdminAuthorizationHandler : AuthorizationHandler<AdminRoleRequirement>
 {
-    private readonly AuthControllerLogic _authControllerLogic;
+    private readonly AuthLogic _authLogic;
 
-    public AdminAuthorizationHandler(AuthControllerLogic authControllerLogic)
+    public AdminAuthorizationHandler(AuthLogic authLogic)
     {
-        _authControllerLogic = authControllerLogic;
+        _authLogic = authLogic;
     }
 
     protected override async Task HandleRequirementAsync(
@@ -26,7 +26,7 @@ public class AdminAuthorizationHandler : AuthorizationHandler<AdminRoleRequireme
 
             if (user.Claims.TryGetClaimValue(Claims.UserClaim, out Guid id))
             {
-                if (await _authControllerLogic.AnyAdminByAccess(id))
+                if (await _authLogic.TryGetAdminIdByAccess(id))
                 {
                     context.Succeed(requirement);
                     return;

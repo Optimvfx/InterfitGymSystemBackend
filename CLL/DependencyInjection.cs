@@ -1,4 +1,5 @@
 using CLL.ControllersLogic;
+using CLL.ControllersLogic.Interface;
 using Common.Extensions;
 
 namespace CLL;
@@ -10,8 +11,8 @@ public static class DependencyInjection
     {
         services.AddControllersLogicConfigs();
         
-        services.AddWithCustomLifeTime<AuthControllerLogic>(serviceLifetime);
-
+        services.AddWithCustomLifeTime<IAuthLogic, AuthLogic>(serviceLifetime);
+        
         return services;
     }
     

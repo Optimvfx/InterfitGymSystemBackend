@@ -13,6 +13,7 @@ public class Vacation : IIndexSearchable
    [Key] public Guid Id { get; set; }
    
    [AllowNull] public string? Reson { get; set; }
+   
    [Required] public DateOnly CreationDate { get; set; }
    [Required] public uint DurationInDays { get; set; }
    

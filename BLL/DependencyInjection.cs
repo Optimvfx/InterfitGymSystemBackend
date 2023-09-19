@@ -1,8 +1,5 @@
 using BLL.AutoMapper.Profiles;
-using BLL.Models.Employee;
-using BLL.Services;
-using BLL.Services.ImageService;
-using BLL.Services.TimeService;
+using BLL.Services._Access;
 using Common.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,11 +12,6 @@ public static class DependencyInjection
     {
         services.AddWithCustomLifeTime<AuthService>(serviceLifetime);
         services.AddWithCustomLifeTime<AdminService>(serviceLifetime);
-        
-        services.AddWithCustomLifeTime<EmployeeService>(serviceLifetime);
-        services.AddWithCustomLifeTime<PositionService>(serviceLifetime);
-        services.AddWithCustomLifeTime<TimetableService>(serviceLifetime);
-        services.AddWithCustomLifeTime<VacationService>(serviceLifetime);
         
         services.AddMapper();
         

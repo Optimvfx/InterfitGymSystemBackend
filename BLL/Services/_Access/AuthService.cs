@@ -1,15 +1,9 @@
-using AutoMapper;
-using BLL.Services.TimeService;
 using Common.Exceptions.General;
 using Common.Extensions;
-using Common.Helpers;
 using DAL;
-using DAL.Entities;
-using DAL.Entities.Access;
-using DAL.Entities.Access.AccessType;
 using Microsoft.EntityFrameworkCore;
 
-namespace BLL.Services;
+namespace BLL.Services._Access;
 
 public class AuthService
 {

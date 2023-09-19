@@ -1,4 +1,4 @@
-namespace BLL.Models.Employee;
+namespace BLL.Models.Employee.Requests;
 
 public class VacationCreationRequest    
 {

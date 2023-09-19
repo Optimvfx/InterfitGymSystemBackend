@@ -1,4 +1,4 @@
-using GymCarSystemBackend.Controllers.AuthorizationHandlers;
+using GymCarSystemBackend.AuthorizationHandlers;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GymCarSystemBackend.Extensions;

@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using BLL.Services.TokenService;
 using CLL.Consts;
-using GymCarSystemBackend.Controllers.AuthorizationHandlers;
 using GymCarSystemBackend.Extensions;
 using GymCarSystemBackend.Middlewares.ErrorHandler;
 using GymCarSystemBackend.Middlewares.ErrorHandler.PossibleErrorHandler;

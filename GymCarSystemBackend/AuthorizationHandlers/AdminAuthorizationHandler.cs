@@ -1,11 +1,9 @@
-using BLL.Services;
 using CLL.Consts;
 using CLL.ControllersLogic;
 using Common.Convertors;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
-namespace GymCarSystemBackend.Controllers.AuthorizationHandlers;
+namespace GymCarSystemBackend.AuthorizationHandlers;
 
 public class AdminAuthorizationHandler : AuthorizationHandler<AdminRoleRequirement>
 {

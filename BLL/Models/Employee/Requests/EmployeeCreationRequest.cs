@@ -1,7 +1,6 @@
 using BLL.Models.Personality;
-using DAL.Entities.Gym.Person;
 
-namespace BLL.Models.Employee;
+namespace BLL.Models.Employee.Requests;
 
 public class EmployeeCreationRequest : PersonCreationRequest
 {

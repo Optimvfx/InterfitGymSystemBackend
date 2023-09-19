@@ -28,8 +28,9 @@
       <Reference Include="System.Drawing.Common" />
     </ItemGroup>
 
+
     <ItemGroup>
-      <Folder Include="ControllersLogic\Config\" />
+      <Folder Include="ControllersLogic\Interface\EmployeeLogic\" />
     </ItemGroup>
 
 </Project>

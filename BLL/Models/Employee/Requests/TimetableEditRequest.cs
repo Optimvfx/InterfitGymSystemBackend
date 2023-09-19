@@ -1,8 +1,8 @@
-using BLL.Models.Interface;
+using Common.Interfaces;
 using DAL.Entities.Gym.Person.Employeers;
 using DAL.Entities.Structs;
 
-namespace BLL.Models.Employee;
+namespace BLL.Models.Employee.Requests;
 
 public class TimetableEditRequest : IEditRequest<TimetableEntity>
 {

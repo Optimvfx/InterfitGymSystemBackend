@@ -1,4 +1,4 @@
-namespace BLL.Models.Interface;
+namespace Common.Interfaces;
 
 public interface IEditRequest<T>
 {

@@ -1,6 +1,6 @@
 using DAL;
 
-namespace BLL.Services;
+namespace BLL.Services._Access;
 
 public class AdminService
 {

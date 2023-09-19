@@ -1,4 +1,4 @@
-using BLL.Models.Interface;
+using Common.Interfaces;
 using DAL.Entities.Gym.Person;
 
 namespace BLL.Models.Personality;

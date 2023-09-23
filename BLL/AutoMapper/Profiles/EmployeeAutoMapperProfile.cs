@@ -9,8 +9,6 @@ public class EmployeeAutoMapperProfile : BaseAutoMapperProfile
 {
     public EmployeeAutoMapperProfile()
     {
-        CreateMap<Timetable, TimetableEntity>();
-        CreateMap<VacationCreationRequest, Vacation>();
         CreateMap<EmployeeCreationRequest, Employee>();
     }
 }

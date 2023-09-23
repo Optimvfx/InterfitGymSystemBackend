@@ -21,7 +21,6 @@ public class Gym
     public virtual ICollection<Card> Cards { get; set; }
     
     //Section of sales logic
-    public virtual ICollection<AbbonitureProfile> AbbonitureProfiles { get; set; }
     public virtual ICollection<TradeTransaction> TradeTransactions { get; set; }
     public virtual ICollection<Training> Trainings { get; set; }
     public virtual ICollection<Order> Orders { get; set; }
@@ -29,7 +28,6 @@ public class Gym
     //People section
     public virtual ICollection<Employee> Personnel { get; set; }
     public virtual ICollection<Coach> Coaches { get; set; }
-    public virtual ICollection<Client> Clients { get; set; }
     
     //Hardware managmet section
     public virtual ICollection<TrainingDevice> TrainingDevices { get; set; }
@@ -62,20 +60,12 @@ public class GymTypeConfiguration : IEntityTypeConfiguration<Gym>
             .WithOne(e => e.Gym)
             .HasForeignKey(e => e.GymId)
             .OnDelete(DeleteBehavior.Cascade);
-        builder.HasMany(g => g.AbbonitureProfiles)
-            .WithOne(e => e.Gym)
-            .HasForeignKey(e => e.GymId)
-            .OnDelete(DeleteBehavior.Cascade);
-
+        
         #endregion
 
         #region People
 
         builder.HasMany(g => g.Personnel)
-            .WithOne(e => e.Gym)
-            .HasForeignKey(e => e.GymId)
-            .OnDelete(DeleteBehavior.SetNull);
-        builder.HasMany(g => g.Clients)
             .WithOne(e => e.Gym)
             .HasForeignKey(e => e.GymId)
             .OnDelete(DeleteBehavior.SetNull);

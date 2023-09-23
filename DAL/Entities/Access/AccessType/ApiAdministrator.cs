@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace DAL.Entities.Access.AccessType;
 
 [Table("ApiAdministrator")]
-public class ApiAdministrator : AccessType
+public class ApiAdministrator : Access
 {
     public virtual ICollection<ApiKey> CreatedApiKeys { get; set; }
 }

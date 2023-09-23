@@ -1,5 +1,6 @@
 using CLL.ControllersLogic;
 using CLL.ControllersLogic.Interface;
+using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Extensions;
 
 namespace CLL;

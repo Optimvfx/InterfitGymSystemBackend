@@ -14,9 +14,6 @@ public class Access : IIndexSearchable
     [Key] public Guid Id { get; set; }
 
     [Required] public ICollection<ApiKey> ApiKeys { get; set; } = null!;
-    
-    [Required] public Guid TypeId { get; set; }
-    public virtual AccessType.AccessType Type { get; set; }
 }
 
 public class AccessEntityTypeConfiguration : IEntityTypeConfiguration<Access>
@@ -27,9 +24,5 @@ public class AccessEntityTypeConfiguration : IEntityTypeConfiguration<Access>
             .WithOne(a => a.Access)
             .HasForeignKey(a => a.AccessId)
             .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasOne(a => a.Type)
-            .WithMany(t => t.Accesses)
-            .HasForeignKey(a => a.TypeId);
     }
 }

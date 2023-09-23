@@ -2,7 +2,9 @@
 using BLL.Services._Access;
 using BLL.Services.TokenService;
 using CLL.ControllersLogic.Interface;
+using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using DAL.Entities.Access.AccessType;
 
 namespace CLL.ControllersLogic;
 
@@ -28,12 +30,20 @@ public class AuthLogic : IAuthLogic
         return new(token);
     }
 
-    public async Task<Result<Guid>> TryGetAdminIdByAccess(Guid id)
+    public async Task<bool> AccessIsAdmin(Guid id)
     {
         if (await _authService.AnyAdminByAccess(id) == false)
             return false;
 
-        var admin = await _authService.GetAdminIdByAccess(id);
-        return new Result<Guid>(admin);
+        return true;
+    }
+
+    public async Task<Result<Guid>> TryGetGymIdByAccess(Guid id)
+    {
+        if (await _authService.AnyTerminalByAccess(id) == false)
+            return false;
+
+        Terminal terminal = await _authService.GetTerminalByAccess(id);
+        return new Result<Guid>(terminal.GymId);
     }
 }

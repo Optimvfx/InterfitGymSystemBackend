@@ -11,7 +11,7 @@
           "lib/Antlr3.Runtime.dll": {}
         }
       },
-      "AutoMapper/12.0.1": {
+      "AutoMapper/12.0.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0"
@@ -27,10 +27,10 @@
           }
         }
       },
-      "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1": {
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.0": {
         "type": "package",
         "dependencies": {
-          "AutoMapper": "[12.0.1]",
+          "AutoMapper": "12.0.0",
           "Microsoft.Extensions.Options": "6.0.0"
         },
         "compile": {
@@ -527,7 +527,7 @@
           }
         },
         "build": {
-          "build/SixLabors.ImageSharp.props": {}
+          "build/_._": {}
         }
       },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.4": {
@@ -847,30 +847,30 @@
         "lib/Antlr3.Runtime.pdb"
       ]
     },
-    "AutoMapper/12.0.1": {
-      "sha512": "hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
+    "AutoMapper/12.0.0": {
+      "sha512": "0Rmg0zI5AFu1O/y//o9VGyhxKjhggWpk9mOA1tp0DEVx40c61bs+lnQv+0jUq8XbniF7FKgIVvI1perqiMtLrA==",
       "type": "package",
-      "path": "automapper/12.0.1",
+      "path": "automapper/12.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "automapper.12.0.1.nupkg.sha512",
+        "automapper.12.0.0.nupkg.sha512",
         "automapper.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.dll",
         "lib/netstandard2.1/AutoMapper.xml"
       ]
     },
-    "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1": {
-      "sha512": "+g/K+Vpe3gGMKGzjslMOdqNlkikScDjWfVvmWTayrDHaG/n2pPmFBMa+jKX1r/h6BDGFdkyRjAuhFE3ykW+r1g==",
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.0": {
+      "sha512": "XCJ4E3oKrbRl1qY9Mr+7uyC0xZj1+bqQjmQRWTiTKiVuuXTny+7YFWHi20tPjwkMukLbicN6yGlDy5PZ4wyi1w==",
       "type": "package",
-      "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
+      "path": "automapper.extensions.microsoft.dependencyinjection/12.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
@@ -2084,13 +2084,9 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "AutoMapper >= 12.0.1",
-      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
-      "Common >= 1.0.0",
-      "DAL >= 1.0.0",
-      "Microsoft.EntityFrameworkCore >= 7.0.3",
-      "Microsoft.Extensions.DependencyInjection >= 7.0.0",
-      "SixLabors.ImageSharp >= 3.0.2"
+      "AutoMapper >= 12.0.0",
+      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
+      "Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2120,9 +2116,6 @@
           "projectReferences": {
             "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj": {
               "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj"
-            },
-            "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj"
             }
           }
         }
@@ -2139,23 +2132,11 @@
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
-            "version": "[12.0.1, )"
+            "version": "[12.0.0, )"
           },
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
-            "version": "[12.0.1, )"
-          },
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[7.0.3, )"
-          },
-          "Microsoft.Extensions.DependencyInjection": {
-            "target": "Package",
-            "version": "[7.0.0, )"
-          },
-          "SixLabors.ImageSharp": {
-            "target": "Package",
-            "version": "[3.0.2, )"
+            "version": "[12.0.0, )"
           }
         },
         "imports": [

@@ -22,9 +22,6 @@ public class AbbonitureProfile : IIndexSearchable
     [Required] public bool OnSale { get; set; }
     
     public virtual ICollection<TradeTransaction> TradeTransactions { get; set; }
-    
-    [Required] public Guid GymId { get; set; }
-    public virtual Gym Gym { get; set; }
 }
 
 public class AbbonitureTypeConfiguration : IEntityTypeConfiguration< AbbonitureProfile>
@@ -35,10 +32,5 @@ public class AbbonitureTypeConfiguration : IEntityTypeConfiguration< AbbonitureP
             .WithOne(t => t.AbbonitureProfile)
             .HasForeignKey(t => t.AbbonitureProfileId)
             .OnDelete(DeleteBehavior.Cascade);
-        
-        builder.HasOne(t => t.Gym)
-            .WithMany(g => g.AbbonitureProfiles)
-            .HasForeignKey(t => t.GymId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

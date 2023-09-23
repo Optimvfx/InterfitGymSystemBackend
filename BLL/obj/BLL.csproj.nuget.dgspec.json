@@ -28,9 +28,6 @@
             "projectReferences": {
               "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj": {
                 "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\Common\\Common.csproj"
-              },
-              "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\DAL\\DAL.csproj"
               }
             }
           }
@@ -47,23 +44,11 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[12.0.1, )"
+              "version": "[12.0.0, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[12.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.3, )"
-            },
-            "Microsoft.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "SixLabors.ImageSharp": {
-              "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[12.0.0, )"
             }
           },
           "imports": [

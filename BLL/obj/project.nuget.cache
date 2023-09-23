@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kcxTxJF09Lnfac3ik6oKhMxQdTH2Vsx3XZL+xGLBQkKzCNI07GDLiSu8RkEHbPcR8ijHZ8KXYFO83t+8hi7z2A==",
+  "dgSpecHash": "BkrupSmZw8gdNCPFvYhsfPu2FE+njMu9rnWHDsaMAb6VleS4/Vn6iATQf+Oqwmr5PKs0XFzJqw7f46yAX2whyQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\maxim\\RiderProjects\\InterfitGymSystemBackend\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maxim\\.nuget\\packages\\antlr\\3.4.1.9004\\antlr.3.4.1.9004.nupkg.sha512",
-    "C:\\Users\\maxim\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\maxim\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\maxim\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\maxim\\.nuget\\packages\\laraue.efcoretriggers\\1.3.2\\laraue.efcoretriggers.1.3.2.nupkg.sha512",
     "C:\\Users\\maxim\\.nuget\\packages\\laraue.efcoretriggers.common\\7.1.1\\laraue.efcoretriggers.common.7.1.1.nupkg.sha512",
     "C:\\Users\\maxim\\.nuget\\packages\\laraue.efcoretriggers.sqllite\\7.1.1\\laraue.efcoretriggers.sqllite.7.1.1.nupkg.sha512",

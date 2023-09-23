@@ -3,8 +3,8 @@ namespace Common.Models;
 public struct ValueRange<T> 
 where T : struct, IComparable<T>
 {
-    public readonly T Min;
-    public readonly T Max;
+    public T Min { get; private set; }
+    public T Max { get; private set; }
 
     public ValueRange(T min, T max)
     {

@@ -1,10 +1,11 @@
 using Common.Models;
 
-namespace CLL.ControllersLogic.Interface;
+namespace CLL.ControllersLogic.Interface.AccessLogic;
 
 public interface IAuthLogic
 {
     Task<Result<string>> TryGetJwt(string apiKey);
     
-    Task<Result<Guid>> TryGetAdminIdByAccess(Guid id);
+    Task<bool> AccessIsAdmin(Guid id);
+    Task<Result<Guid>> TryGetGymIdByAccess(Guid id);
 }

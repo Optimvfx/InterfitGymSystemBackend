@@ -14,10 +14,6 @@ public static class ApplicationDbContextExtensions
                       Description = "This is main api key",
                   CreationDate = DateTime.Now,
                   DurationInDays = int.MaxValue,
-                  Access = new Access()
-                  {
-                        Type = new ApiAdministrator()
-                  }
             });
 
             db.SaveChanges();

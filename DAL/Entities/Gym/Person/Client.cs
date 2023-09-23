@@ -14,9 +14,6 @@ public class Client : Person
     public virtual Abbonniture Abbonniture { get; set; }
     
     [AllowNull] public string? TelegramId { get; set; }
-    
-    [Required] public Guid GymId { get; set; }
-    public virtual Gym Gym { get; set; }
 }
 
 public class ClientTypeConfiguration : IEntityTypeConfiguration<Client>
@@ -27,10 +24,5 @@ public class ClientTypeConfiguration : IEntityTypeConfiguration<Client>
             .WithOne(a => a.Client)
             .HasForeignKey<Client>(c => c.AbbonnitureId)
             .OnDelete(DeleteBehavior.Cascade);
-        
-        builder.HasOne(t => t.Gym)
-            .WithMany(g => g.Clients)
-            .HasForeignKey(t => t.GymId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

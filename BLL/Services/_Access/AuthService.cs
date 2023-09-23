@@ -1,6 +1,7 @@
 using Common.Exceptions.General;
 using Common.Extensions;
 using DAL;
+using DAL.Entities.Access.AccessType;
 using Microsoft.EntityFrameworkCore;
 
 namespace BLL.Services._Access;
@@ -33,21 +34,21 @@ public class AuthService
 
     public async Task<bool> AnyAdminByAccess(Guid id)
     {
-        if (await _db.Accesses.NothingByIdAsync(id))
-            throw new NotFoundException();
-
-        var access = await _db.Accesses.GetByIdAsync(id);
-
-        return await _db.ApiAdministrators.AnyByIdAsync(access.TypeId);
+        return await _db.ApiAdministrators.AnyByIdAsync(id);
     }
 
-    public async Task<Guid> GetAdminIdByAccess(Guid id)
+    public async Task<bool> AnyTerminalByAccess(Guid id)
     {
-        if (await _db.Accesses.NothingByIdAsync(id))
+        return await _db.Terminals.AnyByIdAsync(id);
+    }
+
+    public async Task<Terminal> GetTerminalByAccess(Guid id)
+    {
+        if (await AnyTerminalByAccess(id) == false)
             throw new NotFoundException();
 
-        var access = await _db.Accesses.GetByIdAsync(id);
-
-        return (await _db.ApiAdministrators.GetByIdAsync(access.TypeId)).Id;
+        return await _db.Terminals
+            .AsNoTracking()
+            .GetByIdAsync(id);
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace DAL.Entities.Access.AccessType;
 
 [Table("Terminals")]
-public class Terminal : AccessType
+public class Terminal : Access
 {
     [Required] public string Title { get; set; }
     [AllowNull] public string? Description { get; set; }

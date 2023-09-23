@@ -115,15 +115,3 @@ public class GymAdminController : BaseAdminController
         return Ok();
     }
 }
-
-public class GymEditRequest
-{
-}
-
-public class GymVM
-{
-}
-
-public class GymCreationRequest
-{
-}

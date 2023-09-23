@@ -71,27 +71,3 @@ public class PurchasesBusinessOwnerController: BaseAdminController
         return Ok();
     }
 }
-
-public interface IOrderLogic
-{ 
-    Task<bool>TryRegister(OrderRegistrationRequest request);
-    Task<bool> TryRegisterHardware(TechnicalHardwareOrderRegistrationRequest request);
-    Task<bool> TryRegisterConsumable(ConsumableOrderRegistrationRequest request);
-    Task<bool> TryRegisterTrainingDevice(TrainingDeviceOrderRegistrationRequest request);
-}
-
-public class TechnicalHardwareOrderRegistrationRequest
-{
-}
-
-public class ConsumableOrderRegistrationRequest
-{
-}
-
-public class TrainingDeviceOrderRegistrationRequest
-{
-}
-
-public class OrderRegistrationRequest
-{
-}

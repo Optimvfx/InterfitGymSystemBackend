@@ -117,27 +117,3 @@ public class TerminalAdminController : BaseAdminController
         return Ok();
     }
 }
-
-public interface ITerminalLogic
-{
-    Task<Result<Guid>> Create(TerminalCreationRequest terminal);
-    Task<Result<TerminalVM>> TryGet(Guid id);
-    Task<BasePaginationView<TerminalVM>> GetAll();
-    Task<bool> Edit(Guid id, TerminalEditRequest reqest);
-    Task<bool> Exist(Guid id);
-    Task<bool> IsEnabled(Guid id);
-    Task Disable(Guid id);
-    Task Enable(Guid id);
-}
-
-public class TerminalEditRequest
-{
-}
-
-public class TerminalVM
-{
-}
-
-public class TerminalCreationRequest
-{
-}

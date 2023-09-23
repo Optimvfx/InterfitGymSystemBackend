@@ -39,7 +39,3 @@ public class AdminAuthorizationHandler : AuthorizationHandler<AdminRoleRequireme
         }
     }
 }
-
-public class AdminRoleRequirement : IAuthorizationRequirement
-{
-}

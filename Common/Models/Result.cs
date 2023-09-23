@@ -33,9 +33,3 @@ public struct Result<T>
         return new Result<T>();
     }
 }
-
-public enum ResultStatusCode
-{
-    Success,
-    Failure
-}

@@ -3,8 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using DAL.Entities.Interfaces;
 using DAL.Entities.Structs;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Person.Employeers;
 
@@ -23,15 +21,4 @@ public class TimetableEntity : IIndexSearchable
     [Required] public DayGraphic SundaySchedule { get; set; }
     
     public virtual ICollection<Employee> Employee { get; set; }
-}
-
-public class TimetableTypeConfiguration : IEntityTypeConfiguration<TimetableEntity>
-{
-    public void Configure(EntityTypeBuilder<TimetableEntity> builder)
-    {
-        builder.HasMany(t => t.Employee)
-            .WithOne(e => e.Timetable)
-            .HasForeignKey(e => e.TimetableId)
-            .OnDelete(DeleteBehavior.SetNull);
-    }
 }

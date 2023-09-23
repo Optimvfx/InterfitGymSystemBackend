@@ -88,30 +88,3 @@ public class BreakdownBusinessOwnerController : BaseAdminController
         return Ok();
     }  
 }
-
-public class TrainingDeviceRepairRegisterRequest
-{
-    public Guid HardwareId { get; set; }
-}
-
-public class TechnicalHardwareRepairRegisterRequest
-{
-    public Guid HardwareId { get; set; }
-}
-
-public class ConsumableRepairRegisterRequest
-{
-    public Guid HardwareId { get; set; }
-}
-
-public class ConsumableBreakdowmVM
-{
-}
-
-public class TechnicalHardwareBreakdowmVM
-{
-}
-
-public class TrainingDeviceBreakdowmVM
-{
-}

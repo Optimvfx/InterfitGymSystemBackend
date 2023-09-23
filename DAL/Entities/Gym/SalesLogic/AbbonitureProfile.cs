@@ -2,8 +2,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using DAL.Entities.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.SalesLogic;
 
@@ -22,15 +20,4 @@ public class AbbonitureProfile : IIndexSearchable
     [Required] public bool OnSale { get; set; }
     
     public virtual ICollection<TradeTransaction> TradeTransactions { get; set; }
-}
-
-public class AbbonitureTypeConfiguration : IEntityTypeConfiguration< AbbonitureProfile>
-{
-    public void Configure(EntityTypeBuilder< AbbonitureProfile> builder)
-    {
-        builder.HasMany(a => a.TradeTransactions)
-            .WithOne(t => t.AbbonitureProfile)
-            .HasForeignKey(t => t.AbbonitureProfileId)
-            .OnDelete(DeleteBehavior.Cascade);
-    }
 }

@@ -36,13 +36,3 @@ public class ErrorHandlerCollection
         _errorHandlers.Add(errorHandler);
     }
 }
-    
-public interface IPossibleErrorHandler : IErrorHandler
-{
-    bool CanHandle(Exception exception);
-}
-    
-public interface IErrorHandler
-{
-    void Handle(HttpContext context, Exception exception);
-}

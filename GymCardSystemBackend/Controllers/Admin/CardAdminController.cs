@@ -189,8 +189,3 @@ public class CardAdminController : BaseAdminController
         return NoContent();
     }
 }
-
-internal interface IPesrsonLogic
-{
-    Task<bool> Exists(Guid personGuidId);
-}

@@ -70,12 +70,3 @@ public class AbbonitureBusinessOwnerController : BaseAdminController
         return Ok();
     }
 }
-
-public class EditAbbonitureProfileRequest
-{
-    public Guid Id { get; set; }
-}
-
-public class CreateAbbonitureProfileRequest
-{
-}

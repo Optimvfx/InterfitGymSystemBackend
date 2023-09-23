@@ -2,8 +2,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using DAL.Entities.Gym.Guarantee;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Hardware;
 
@@ -19,20 +17,4 @@ public class TrainingDevice : GuaranteePossible
     
     [Required] public Guid GymId { get; set; }
     public virtual Gym Gym { get; set; }
-}
-
-public class TrainingDeviceConfiguration : IEntityTypeConfiguration<TrainingDevice>
-{
-    public void Configure(EntityTypeBuilder<TrainingDevice> builder)
-    {
-        builder.HasMany(t => t.Breakdowns)
-            .WithOne(b => b.DetectedAt)
-            .HasForeignKey(b => b.DetectedAtId)
-            .OnDelete(DeleteBehavior.Cascade);
-        
-        builder.HasOne(t => t.Gym)
-            .WithMany(g => g.TrainingDevices)
-            .HasForeignKey(t => t.GymId)
-            .OnDelete(DeleteBehavior.NoAction);
-    }
 }

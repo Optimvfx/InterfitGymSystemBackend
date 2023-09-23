@@ -62,13 +62,3 @@ public class SalaryBusinessOwnerController : BaseAdminController
 
     #endregion
 }
-
-public interface ISalaryLogic
-{
-    Task<BasePaginationView<SalaryVM>> GetAll(bool includeRecycling, ValueRange<DateOnly> dataRange);
-    Task<BasePaginationView<SalaryVM>> GetAllByGym(Guid gymGuidId, bool includeRecycling, ValueRange<DateOnly> dataRange);
-}
-
-public class SalaryVM
-{
-}

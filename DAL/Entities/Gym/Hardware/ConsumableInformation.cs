@@ -2,8 +2,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using DAL.Entities.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Hardware;
 
@@ -17,15 +15,4 @@ public class ConsumableInformation : IIndexSearchable
     
     [Required] public Guid ManufacturerId { get; set; }
     public virtual Company Manufacturer { get; set; }
-}
-
-public class ConsumableInformationConfiguration : IEntityTypeConfiguration<ConsumableInformation>
-{
-    public void Configure(EntityTypeBuilder<ConsumableInformation> builder)
-    {
-        builder.HasOne(t => t.Manufacturer)
-            .WithMany()
-            .HasForeignKey(t => t.ManufacturerId)
-            .OnDelete(DeleteBehavior.NoAction);
-    }
 }

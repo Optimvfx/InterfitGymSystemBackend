@@ -1,8 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.Entities.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Hardware;
 
@@ -19,20 +17,4 @@ public class Consumable : IIndexSearchable
     
     [Required] public Guid GymId { get; set; }
     public virtual Gym Gym { get; set; }
-}
-
-public class ConsumableConfiguration : IEntityTypeConfiguration<Consumable>
-{
-    public void Configure(EntityTypeBuilder<Consumable> builder)
-    {
-        builder.HasOne(t => t.ConsumableInformation)
-            .WithMany()
-            .HasForeignKey(t => t.ConsumableInformationId)
-            .OnDelete(DeleteBehavior.NoAction);
-        
-        builder.HasOne(t => t.Gym)
-            .WithMany(g => g.Consumables)
-            .HasForeignKey(t => t.GymId)
-            .OnDelete(DeleteBehavior.NoAction);
-    }
 }

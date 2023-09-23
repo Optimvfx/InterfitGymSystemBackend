@@ -61,19 +61,3 @@ public class ClientTerminalController : BaseAdminController
         return Ok();
     }
 }
-
-public interface IClientLogic
-{
-    Task<bool> Exists(Guid clientId);
-    Task<Result<Guid>> Create(CreateClientRequest request);
-    Task ApplyEdit(Guid guidId, EditClientRequest request);
-}
-
-public class EditClientRequest
-{
-}
-
-public class CreateClientRequest
-{
-}
-  

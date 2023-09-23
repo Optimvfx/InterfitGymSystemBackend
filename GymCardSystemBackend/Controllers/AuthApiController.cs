@@ -24,7 +24,7 @@ public class AuthApiController : BaseController
         var result = await _authControllerLogic.TryGetJwt(apiKey);
         
         if(result.IsFailure())
-            return Unauthorized(new { message = "Неправильний ключ API" });
+            return Unauthorized("Wrong api key");
 
         var token = result.Value;
 

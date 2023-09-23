@@ -5,7 +5,6 @@ using Common.Models;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.Controllers.Admin;
-using GymCardSystemBackend.Controllers.BusinessOwner;
 using GymCardSystemBackend.ValidationAttributes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -130,46 +129,4 @@ public class SailsTerminalController: BaseTerminalController
 
         return Ok();
     }
-}
-
-public class TrainerVM
-{
-}
-
-public interface ITrainingLogic
-{
-    Task<bool> Exists(Guid gymId, Guid trainerId);
-    Task<bool> TrainerIsFree(Guid gym, Guid trainerId);
-    
-    Task<bool> TryRegisterTraining(Guid trainerId, Guid clientId, uint requestTotalHours);
-    Task<BasePaginationView<TrainerVM>> GetAllFree(Guid gym);
-    Task<bool> TrainerInGym(Guid gym, Guid trainerId);
-}
-
-public interface IAbbonitureLogic
-{
-    Task<BasePaginationView<AbbonitureProfileVM>> GetAll();
-    Task<bool> Exists(Guid abbonitureId);
-    Task<bool> ClientHasActiveAbboniture(Guid clientId);
-    Task<bool> TryRegisterSale(Guid clientId, Guid requestAbbonitureId);
-    Task<bool> Create(CreateAbbonitureProfileRequest request);
-    Task<bool> Edit(EditAbbonitureProfileRequest request);
-    Task<bool> Delete(Guid id);
-}
-
-public class RegisterAbbonitureSaleRequest
-{
-    public byte[] ClientCardCode { get; set; }
-    public Guid AbbonitureId { get; set; }
-}
-
-public class RegisterTrainingSaleRequest
-{   
-    public byte[] TrainerCardCode { get; set; }
-    public byte[] ClienCardCode { get; set; }
-    public uint TotalHours { get; set; }
-}
-
-public class AbbonitureProfileVM
-{
 }

@@ -3,8 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using DAL.Entities.Interfaces;
 using DAL.Entities.Primary;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.Person;
 
@@ -31,15 +29,4 @@ public class Person : IIndexSearchable
         Male,
         Female
     }   
-}
-
-public class PersonTypeConfiguration : IEntityTypeConfiguration<Person>
-{
-    public void Configure(EntityTypeBuilder<Person> builder)
-    {
-        builder.HasMany(p => p.Cards)
-            .WithOne(c => c.Owner)
-            .HasForeignKey(c => c.OwnerId)
-            .OnDelete(DeleteBehavior.SetNull);
-    }
 }

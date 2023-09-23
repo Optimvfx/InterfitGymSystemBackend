@@ -1,9 +1,7 @@
 using BLL.Services.DataCoder;
 using CLL.ControllersLogic.Interface.AccessLogic;
-using Common.Models;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
-using GymCardSystemBackend.Controllers.BusinessOwner;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -79,42 +77,4 @@ public class BreakdownTerminalController : BaseTerminalController
 
         return Ok();
     }
-}
-
-public interface IHardwareLogic
-{
-    Task<bool> ExistsTrainingDevice(Guid gymId, Guid trainingDeviceId);
-    Task<bool> ValidTrainingDeviceBreakdown(Guid requestBreakdownId);
-    Task<bool> ExistsConsumable(Guid gym, Guid requestConsumableId);
-    Task<bool> ExistsTechnicalHardware(Guid gym, Guid requestTechnicalHardwareId);
-}
-
-public interface IBreakdownLogic
-{
-    Task<bool> RegisterTrainingDeviceBreakdown(TrainingDeviceBreakdownRegisterRequest request);
-    Task<bool> RegisterConsumableBreakdowns(ConsumableBreakdownRegisterRequest request);
-    Task<bool> RegisterTechnicalHardwareBreakdown(TechnicalHardwareBreakdownRegisterRequest request);
-    Task<BasePaginationView<TrainingDeviceBreakdowmVM>> GetAllTrainingDevice();
-    Task<BasePaginationView<TechnicalHardwareBreakdowmVM>> GetAllTechnicalHardware();
-    Task<BasePaginationView<ConsumableBreakdowmVM>> GetAllConsumable();
-    Task<bool> RegisterTechnicalHardwareRepair(TechnicalHardwareRepairRegisterRequest request);
-    Task<bool> AnyTechnicalHardware(Guid requestHardwareId);
-    Task<bool> RegisterTrainingDeviceRepair(TrainingDeviceRepairRegisterRequest request);
-    Task<bool> AnyTrainingDevice(Guid requestHardwareId);
-}
-
-public class ConsumableBreakdownRegisterRequest
-{
-    public Guid ConsumableId { get; set; }
-}
-
-public class TrainingDeviceBreakdownRegisterRequest
-{
-    public Guid TrainingDeviceId { get; set; }
-    public Guid BreakdownId { get; set; }
-}
-
-public class TechnicalHardwareBreakdownRegisterRequest
-{
-    public Guid TechnicalHardwareId { get; set; }
 }

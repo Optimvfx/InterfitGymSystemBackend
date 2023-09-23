@@ -3,7 +3,6 @@ using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
-using GymCardSystemBackend.Controllers.Admin;
 using GymCardSystemBackend.ValidationAttributes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -196,45 +195,4 @@ public class FinancialBusinessOwnerController : BaseAdminController
     }
 
     #endregion
-}
-
-public interface IGymLogic
-{
-    Task<bool> Exist(Guid id);
-    Task<Result<Guid>> Create(GymCreationRequest request);
-    Task<Result<GymVM>> TryGet(Guid id);
-    Task<BasePaginationView<GymVM>> GetAll();
-    Task<bool> Edit(Guid id, GymEditRequest reqest);
-    Task<bool> IsEnabled(Guid id);
-    Task Disable(Guid id);
-    Task Enable(Guid id);
-}
-
-public interface IFinanceLogic
-{
-    Task<Result<ProcentEarningsVM>> TryGetProcentEarnings(ValueRange<DateOnly> dataRange);
-    Task<Result<ProcentExpensesVM>> TryGetProcentExpenses(ValueRange<DateOnly> dataRange);
-    Task<Result<EarningsVM>> TryGetEarnings(ValueRange<DateOnly> dataRange);
-    Task<Result<ExpensesVM>> TryGetExpenses(ValueRange<DateOnly> dataRange);
-    
-    Task<Result<ProcentEarningsVM>> TryGetProcentEarnings(ValueRange<DateOnly> dataRange, Guid gymId);
-    Task<Result<ProcentExpensesVM>> TryGetProcentExpenses(ValueRange<DateOnly> dataRange,  Guid gymId);
-    Task<Result<EarningsVM>> TryGetEarnings(ValueRange<DateOnly> dataRange,  Guid gymId);
-    Task<Result<ExpensesVM>> TryGetExpenses(ValueRange<DateOnly> dataRange,  Guid gymId);
-}
-
-public class ProcentEarningsVM
-{
-}
-
-public class ProcentExpensesVM
-{
-}
-
-public class ExpensesVM
-{
-}
-
-public class EarningsVM
-{
 }

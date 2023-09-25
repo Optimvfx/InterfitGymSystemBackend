@@ -1,15 +1,16 @@
+using BLL.Models.Abboniture;
 using Common.Models;
-using GymCardSystemBackend.Controllers.BusinessOwner;
+using Common.Models.PaginationView;
 
-namespace GymCardSystemBackend.Controllers.Terminal;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IAbbonitureLogic
 {
     Task<BasePaginationView<AbbonitureProfileVM>> GetAll();
-    Task<bool> Exists(Guid abbonitureId);
-    Task<bool> ClientHasActiveAbboniture(Guid clientId);
-    Task<bool> TryRegisterSale(Guid clientId, Guid requestAbbonitureId);
-    Task<bool> Create(CreateAbbonitureProfileRequest request);
-    Task<bool> Edit(EditAbbonitureProfileRequest request);
-    Task<bool> Delete(Guid id);
+    Task<bool> Exists(Guid id);
+    Task<bool> ClientHaveActiveAbboniture(Guid clientId);
+    Task RegisterSale(Guid clientId, Guid abbonitureId);
+    Task Create(CreateAbbonitureProfileRequest request);
+    Task Edit(Guid id, EditAbbonitureProfileRequest request);
+    Task Delete(Guid id);
 }

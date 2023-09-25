@@ -8,8 +8,8 @@ public class VacationTypeConfiguration : IEntityTypeConfiguration<Vacation>
     public void Configure(EntityTypeBuilder<Vacation> builder)
     {
         builder.HasOne(v => v.Employee)
-            .WithOne(e => e.Vacation)
-            .HasForeignKey<Vacation>(v => v.EmployeeId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .WithMany(e => e.Vacations)
+            .HasForeignKey(v => v.EmployeeId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

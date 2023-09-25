@@ -1,6 +1,6 @@
-using CLL.Consts;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Convertors;
+using GymCardSystemBackend.Consts;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GymCardSystemBackend.AuthorizationHandlers;

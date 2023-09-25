@@ -1,7 +1,9 @@
-using BLL.Models.Employee.Requests;
+using BLL.Models.Employee;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.ValidationAttributes;
@@ -25,7 +27,7 @@ public class EmployeePersonalManagerController : BaseAdminController
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> Create([FromBody] EmployeeCreationRequest employee)
+    public async Task<IActionResult> Create(EmployeeCreationRequest employee)
     {
         var result = await _employeeLogic.TryCreate(employee);
 

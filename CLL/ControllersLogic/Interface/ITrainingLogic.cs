@@ -1,13 +1,16 @@
+using BLL.Models.Trainer;
 using Common.Models;
+using Common.Models.PaginationView;
 
-namespace GymCardSystemBackend.Controllers.Terminal;
+namespace CLL.ControllersLogic.Interface;
 
 public interface ITrainingLogic
 {
-    Task<bool> Exists(Guid gymId, Guid trainerId);
-    Task<bool> TrainerIsFree(Guid gym, Guid trainerId);
+    Task<bool> Exists(Guid trainerId);
+    Task<bool> TrainerIsFree(Guid trainerId);
     
-    Task<bool> TryRegisterTraining(Guid trainerId, Guid clientId, uint requestTotalHours);
+    Task RegisterTraining(Guid trainerId, Guid clientId, uint totalHours);
     Task<BasePaginationView<TrainerVM>> GetAllFree(Guid gym);
     Task<bool> TrainerInGym(Guid gym, Guid trainerId);
+    Task<bool> ValidTrainingTime(uint totalHours);
 }

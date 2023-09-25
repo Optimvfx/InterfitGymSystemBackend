@@ -1,6 +1,9 @@
+using BLL.Models.Terminal;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.Controllers.PersonalManager;
@@ -28,12 +31,7 @@ public class TerminalAdminController : BaseAdminController
     [ProducesResponseType(404)]
     public async Task<IActionResult> Create(TerminalCreationRequest request)
     {
-        Result<Guid> result = await _terminalLogic.Create(request);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok(await _terminalLogic.Create(request));
     }
     
     [HttpGet("{id}")]
@@ -42,12 +40,13 @@ public class TerminalAdminController : BaseAdminController
     public async Task<IActionResult> Get([GuidConvertible] string id)
     {
         var guidId = DecryptGuid(id);
-        Result<TerminalVM> result = await _terminalLogic.TryGet(guidId);
+        
+        if (await _terminalLogic.Exist(guidId) == false)
+            return NotFound("No terminal by id founded.");
+        
+       TerminalVM terminalVm = await _terminalLogic.TryGet(guidId);
 
-        if (result.IsFailure())
-            return NotFound();
-
-        return Ok(result.Value);
+       return Ok(terminalVm);
     }
 
     [HttpGet("all/{page}")]
@@ -71,10 +70,7 @@ public class TerminalAdminController : BaseAdminController
         if (await _terminalLogic.Exist(guidId) == false)
             return NotFound("No terminal by id founded.");
 
-        var result = await _terminalLogic.Edit(guidId, reqest);
-
-        if (result == false)
-            return BadRequest();
+        await _terminalLogic.Edit(guidId, reqest);
 
         return Ok();
     }

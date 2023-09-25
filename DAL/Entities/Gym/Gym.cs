@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using DAL.Entities.Access.AccessType;
 using DAL.Entities.Gym.Hardware;
 using DAL.Entities.Gym.Person;
+using DAL.Entities.Gym.Person.Persons;
 using DAL.Entities.Gym.SalesLogic;
 using DAL.Entities.Primary;
 
@@ -25,7 +26,8 @@ public class Gym
     
     //People section
     public virtual ICollection<Employee> Personnel { get; set; }
-    public virtual ICollection<Coach> Coaches { get; set; }
+    public virtual ICollection<Trainer> Coaches { get; set; }
+    public virtual ICollection<Visitation> Visitations { get; set; }
     
     //Hardware managmet section
     public virtual ICollection<TrainingDevice> TrainingDevices { get; set; }

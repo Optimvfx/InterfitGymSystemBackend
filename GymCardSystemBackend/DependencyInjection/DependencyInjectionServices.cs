@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using BLL.Services.DataCoder;
 using BLL.Services.TokenService;
-using CLL.Consts;
+using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Singleton;
 
 namespace GymCardSystemBackend.DependencyInjection;

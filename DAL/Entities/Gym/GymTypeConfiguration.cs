@@ -39,7 +39,10 @@ public class GymTypeConfiguration : IEntityTypeConfiguration<Gym>
             .WithOne(e => e.Gym)
             .HasForeignKey(e => e.GymId)
             .OnDelete(DeleteBehavior.SetNull);
-
+        builder.HasMany(g => g.Visitations)
+            .WithOne(v => v.Gym)
+            .HasForeignKey(v => v.GymId)
+            .OnDelete(DeleteBehavior.SetNull);
         #endregion
         
         #region Hardware

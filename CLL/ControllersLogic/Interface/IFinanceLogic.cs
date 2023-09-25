@@ -1,6 +1,7 @@
+using BLL.Models.Fininaces;
 using Common.Models;
 
-namespace GymCardSystemBackend.Controllers.BusinessOwner;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IFinanceLogic
 {

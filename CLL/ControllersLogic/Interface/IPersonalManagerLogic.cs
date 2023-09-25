@@ -1,6 +1,8 @@
+using BLL.Models.PersonalManager;
 using Common.Models;
+using Common.Models.PaginationView;
 
-namespace GymCardSystemBackend.Controllers.Admin;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IPersonalManagerLogic
 {

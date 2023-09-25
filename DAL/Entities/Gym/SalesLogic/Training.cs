@@ -18,7 +18,7 @@ public class Training : IIndexSearchable
     public virtual Client Client { get; set; }
     
     [Required] public Guid TrainerId { get; set; }
-    public virtual Coach Trainer { get; set; }
+    public virtual Trainer Trainer { get; set; }
     
     [Required] public Guid GymId { get; set; }
     public virtual Gym Gym { get; set; }

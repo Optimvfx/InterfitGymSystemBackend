@@ -1,8 +1,8 @@
 using BLL.Services.DataCoder;
-using CLL.Consts;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Convertors;
 using Common.Exceptions.User;
+using GymCardSystemBackend.Consts;
 
 namespace GymCardSystemBackend.Controllers._Base;
 

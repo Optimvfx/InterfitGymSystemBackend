@@ -1,5 +1,6 @@
 using BLL.Services.DataCoder;
 using Common.Models;
+using Common.Models.PaginationView;
 using Microsoft.AspNetCore.Mvc;
 using Controller = Microsoft.AspNetCore.Mvc.Controller;
 

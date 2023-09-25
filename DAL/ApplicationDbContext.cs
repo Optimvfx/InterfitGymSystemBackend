@@ -45,7 +45,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Person> Persons => Set<Person>();
     public DbSet<Employee> Employees => Set<Employee>();
-    public DbSet<Coach> Coaches => Set<Coach>();
+    public DbSet<Trainer> Coaches => Set<Trainer>();
     public DbSet<Client> Clients => Set<Client>();
 
     #region Employees

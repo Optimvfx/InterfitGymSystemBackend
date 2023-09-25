@@ -1,4 +1,6 @@
+using BLL.Models.Abboniture;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
@@ -26,10 +28,7 @@ public class AbbonitureBusinessOwnerController : BaseAdminController
     [ProducesResponseType(400)]
     public async Task<IActionResult> CreateNewAbbonitureProfile(CreateAbbonitureProfileRequest request)
     {
-        var result = await _abbonitureLogic.Create(request);
-
-        if (result == false)
-            return BadRequest();
+        await _abbonitureLogic.Create(request);
 
         return Ok();
     }
@@ -38,15 +37,14 @@ public class AbbonitureBusinessOwnerController : BaseAdminController
     [ProducesResponseType(200)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> EditAbbonitureProfile(EditAbbonitureProfileRequest request)
+    public async Task<IActionResult> EditAbbonitureProfile([GuidConvertible] string id, EditAbbonitureProfileRequest request)
     {
-        if (await _abbonitureLogic.Exists(request.Id) == false)
+        var guidId = DecryptGuid(id);
+        
+        if (await _abbonitureLogic.Exists(guidId) == false)
             return NotFound();
         
-        var result = await _abbonitureLogic.Edit(request);
-
-        if (result == false)
-            return BadRequest();
+        await _abbonitureLogic.Edit(guidId, request);
 
         return Ok();
     }
@@ -62,11 +60,8 @@ public class AbbonitureBusinessOwnerController : BaseAdminController
         if (await _abbonitureLogic.Exists(guidId) == false)
             return NotFound();
         
-        var result = await _abbonitureLogic.Delete(guidId);
+        await _abbonitureLogic.Delete(guidId);
 
-        if (result == false)
-            return BadRequest();
-
-        return Ok();
+        return NoContent();
     }
 }

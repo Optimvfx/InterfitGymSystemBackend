@@ -1,4 +1,6 @@
-namespace GymCardSystemBackend.Controllers.BusinessOwner;
+using BLL.Models.Order;
+
+namespace CLL.ControllersLogic.Interface;
 
 public interface IOrderLogic
 { 

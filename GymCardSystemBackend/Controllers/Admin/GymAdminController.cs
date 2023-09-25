@@ -1,6 +1,9 @@
+using BLL.Models.Gym;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.Controllers.BusinessOwner;
@@ -24,7 +27,7 @@ public class GymAdminController : BaseAdminController
 
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
-    public async Task<IActionResult> Create([FromBody] GymCreationRequest request)
+    public async Task<IActionResult> Create(GymCreationRequest request)
     {
         Result<Guid> result = await _gymLogic.Create(request);
 

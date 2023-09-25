@@ -17,4 +17,9 @@ public struct Procent
         
         Value = value;
     }
+    
+    public static implicit operator double(Procent procent)
+    {
+        return procent.Value;
+    }
 }

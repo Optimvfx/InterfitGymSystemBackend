@@ -1,7 +1,9 @@
+using BLL.Models.Hardware.Breakdowm;
+using BLL.Models.Hardware.Repair;
 using Common.Models;
-using GymCardSystemBackend.Controllers.BusinessOwner;
+using Common.Models.PaginationView;
 
-namespace GymCardSystemBackend.Controllers.Terminal;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IBreakdownLogic
 {

@@ -1,8 +1,10 @@
 using BLL.Models;
+using BLL.Models.Card;
 using BLL.Services.DataCoder;
 using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.Controllers.Terminal;

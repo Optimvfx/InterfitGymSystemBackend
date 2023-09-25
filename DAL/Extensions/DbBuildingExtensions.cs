@@ -1,5 +1,4 @@
 using System.Reflection;
-using DAL.Entities.Structs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -9,10 +8,6 @@ public static class DbBuildingExtensions
 {
     public static ModelConfigurationBuilder UseCustomValueConverterSelector(this ModelConfigurationBuilder configurationBuilder)
     {
-        configurationBuilder
-            .Properties<DayGraphic>()
-            .HaveConversion<DayGraphicConverter>();
-        
         return configurationBuilder;
     }
 

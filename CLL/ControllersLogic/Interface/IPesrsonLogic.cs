@@ -1,4 +1,4 @@
-namespace GymCardSystemBackend.Controllers.Admin;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IPesrsonLogic
 {

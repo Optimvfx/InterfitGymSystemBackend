@@ -1,7 +1,8 @@
+using BLL.Models.Gym;
 using Common.Models;
-using GymCardSystemBackend.Controllers.Admin;
+using Common.Models.PaginationView;
 
-namespace GymCardSystemBackend.Controllers.BusinessOwner;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IGymLogic
 {

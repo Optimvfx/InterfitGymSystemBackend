@@ -1,4 +1,4 @@
-namespace GymCardSystemBackend.Controllers.Terminal;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IHardwareLogic
 {

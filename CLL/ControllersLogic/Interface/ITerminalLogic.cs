@@ -1,13 +1,15 @@
+using BLL.Models.Terminal;
 using Common.Models;
+using Common.Models.PaginationView;
 
-namespace GymCardSystemBackend.Controllers.Admin;
+namespace CLL.ControllersLogic.Interface;
 
 public interface ITerminalLogic
 {
-    Task<Result<Guid>> Create(TerminalCreationRequest terminal);
-    Task<Result<TerminalVM>> TryGet(Guid id);
+    Task<Guid> Create(TerminalCreationRequest terminal);
+    Task<TerminalVM> TryGet(Guid id);
     Task<BasePaginationView<TerminalVM>> GetAll();
-    Task<bool> Edit(Guid id, TerminalEditRequest reqest);
+    Task Edit(Guid id, TerminalEditRequest reqest);
     Task<bool> Exist(Guid id);
     Task<bool> IsEnabled(Guid id);
     Task Disable(Guid id);

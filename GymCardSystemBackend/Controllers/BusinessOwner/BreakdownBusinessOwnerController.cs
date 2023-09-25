@@ -1,6 +1,10 @@
+using BLL.Models.Hardware.Breakdowm;
+using BLL.Models.Hardware.Repair;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.Controllers.Terminal;

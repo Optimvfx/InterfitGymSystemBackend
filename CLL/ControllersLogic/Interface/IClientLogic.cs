@@ -1,6 +1,7 @@
+using BLL.Models.Client;
 using Common.Models;
 
-namespace GymCardSystemBackend.Controllers.Terminal;
+namespace CLL.ControllersLogic.Interface;
 
 public interface IClientLogic
 {

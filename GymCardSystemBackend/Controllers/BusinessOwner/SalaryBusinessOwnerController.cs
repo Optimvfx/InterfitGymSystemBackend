@@ -1,6 +1,9 @@
+using BLL.Models.Fininaces;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.ValidationAttributes;
@@ -27,14 +30,14 @@ public class SalaryBusinessOwnerController : BaseAdminController
     [ProducesResponseType(typeof(IEnumerable<SalaryVM>), 200)]
     [ProducesResponseType(typeof(ValueRange<uint>), 200)]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> GetSalarys(DateOnly from, DateOnly to, bool includeRecycling = false, uint? page = null)
+    public async Task<IActionResult> GetSalarys(DateOnly from, DateOnly to,uint? page = null)
     {  
         if (to < from)
             return BadRequest("Data range is invalid.");
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        BasePaginationView<SalaryVM> paginationView = await _salaryLogic.GetAll(includeRecycling, dataRange);
+        BasePaginationView<SalaryVM> paginationView = await _salaryLogic.GetAll(dataRange);
 
         return PaginationView(paginationView, page);
     }
@@ -46,7 +49,7 @@ public class SalaryBusinessOwnerController : BaseAdminController
     [HttpGet("{gymId}/all")]
     [ProducesResponseType(typeof(SalaryVM), 200)]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> GetGymSalarys([GuidConvertible] string gymId,DateOnly from, DateOnly to, bool includeRecycling = false, uint? page = null)
+    public async Task<IActionResult> GetGymSalarys([GuidConvertible] string gymId,DateOnly from, DateOnly to, uint? page = null)
     {
         var gymGuidId = DecryptGuid(gymId);
         
@@ -55,7 +58,7 @@ public class SalaryBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        BasePaginationView<SalaryVM> paginationView = await _salaryLogic.GetAllByGym(gymGuidId, includeRecycling, dataRange);
+        BasePaginationView<SalaryVM> paginationView = await _salaryLogic.GetAllByGym(gymGuidId, dataRange);
 
         return PaginationView(paginationView, page);
     }

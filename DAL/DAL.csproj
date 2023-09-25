@@ -28,7 +28,114 @@
       <Reference Include="System.Drawing.Common">
         <HintPath>..\JoyFusionInitializer\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll</HintPath>
       </Reference>
+    <ItemGroup>
+      <Compile Update="Entities\Gym\Person\Employeers\PositionTypeConfiguration.cs">
+        <DependentUpon>Position.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\Employeers\TerminalAdministratorTypeConfiguration.cs">
+        <DependentUpon>TerminalAdministrator.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\Employeers\TimetableTypeConfiguration.cs">
+        <DependentUpon>TimetableEntity.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\Employeers\VacationTypeConfiguration.cs">
+        <DependentUpon>Vacation.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\ClientTypeConfiguration.cs">
+        <DependentUpon>Client.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\Clients\AbbonnitureTypeConfiguration.cs">
+        <DependentUpon>Abbonniture.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\TrainerTypeConfiguration.cs">
+        <DependentUpon>Trainer.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\PersonTypeConfiguration.cs">
+        <DependentUpon>Person.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\EmployeeTypeConfiguration.cs">
+        <DependentUpon>Employee.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\ConsumableConfiguration.cs">
+        <DependentUpon>Consumable.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\ConsumableInformationConfiguration.cs">
+        <DependentUpon>ConsumableInformation.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\TechnicalHardwareConfiguration.cs">
+        <DependentUpon>TechnicalHardware.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\TechnicalHardwareInformationConfiguration.cs">
+        <DependentUpon>TechnicalHardwareInformation.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\TrainingDeviceConfiguration.cs">
+        <DependentUpon>TrainingDevice.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\TrainingDeviceInformationConfiguration.cs">
+        <DependentUpon>TrainingDeviceInformation.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\Breakdown\BreakdownConfiguration.cs">
+        <DependentUpon>Breakdown.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Hardware\Breakdown\BreakdownTypeConfiguration.cs">
+        <DependentUpon>BreakdownType.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Guarantee\GuaranteeConfiguration.cs">
+        <DependentUpon>Guarantee.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Guarantee\GuaranteePossibleConfiguration.cs">
+        <DependentUpon>GuaranteePossible.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Guarantee\StoragePlaceConfiguration.cs">
+        <DependentUpon>StoragePlace.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Access\AccessEntityTypeConfiguration.cs">
+        <DependentUpon>Access.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Access\AccessType\ApiAdministratorTypeConfiguration.cs">
+        <DependentUpon>ApiAdministrator.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Access\AccessType\TerminalEntityTypeConfiguration.cs">
+        <DependentUpon>Terminal.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\GymTypeConfiguration.cs">
+        <DependentUpon>Gym.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\SalesLogic\AbbonitureTypeConfiguration.cs">
+        <DependentUpon>AbbonitureProfile.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\SalesLogic\OrderEntityTypeConfiguration.cs">
+        <DependentUpon>Order.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\SalesLogic\OrderTypeEntityTypeConfiguration.cs">
+        <DependentUpon>OrderType.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\SalesLogic\TradeTransactionEntityTypeConfiguration.cs">
+        <DependentUpon>TradeTransaction.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\SalesLogic\TrainingEntityTypeConfiguration.cs">
+        <DependentUpon>Training.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Primary\ApiKeyTypeConfiguration.cs">
+        <DependentUpon>ApiKey.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Primary\CardTypeConfiguration.cs">
+        <DependentUpon>Card.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\Persons\VisitationTypeConfiguration.cs">
+        <DependentUpon>Visitation.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\Gym\Person\Employeers\DayGraphicTypeConfiguration.cs">
+        <DependentUpon>DayGraphic.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Entities\Structs\" />
+    </ItemGroup>
+
+    </ItemGroup>
+
 
 
 

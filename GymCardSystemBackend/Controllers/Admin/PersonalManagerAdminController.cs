@@ -1,7 +1,11 @@
 using BLL.Models;
+using BLL.Models.Gym;
+using BLL.Models.PersonalManager;
 using BLL.Services.DataCoder;
+using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.ValidationAttributes;
@@ -24,7 +28,7 @@ public class PersonalManagerAdminController : BaseAdminController
 
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
-    public async Task<IActionResult> Create([FromBody] PersonalManagerCreationRequest request)
+    public async Task<IActionResult> Create(PersonalManagerCreationRequest request)
     {
         Result<Guid> result = await _terminalLogic.Create(request);
 

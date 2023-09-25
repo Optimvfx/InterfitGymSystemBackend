@@ -1,7 +1,11 @@
+using BLL.Models.Abboniture;
+using BLL.Models.Sale;
+using BLL.Models.Trainer;
 using BLL.Services.DataCoder;
 using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Models;
+using Common.Models.PaginationView;
 using GymCardSystemBackend.Consts;
 using GymCardSystemBackend.Controllers._Base;
 using GymCardSystemBackend.Controllers.Admin;
@@ -72,14 +76,11 @@ public class SailsTerminalController: BaseTerminalController
 
         Guid clientId = clientIdResult.Value;
 
-        if (await _abbonitureLogic.ClientHasActiveAbboniture(clientId))
+        if (await _abbonitureLogic.ClientHaveActiveAbboniture(clientId))
             return BadRequest("Client has active abboniture");
             
-        var result = await _abbonitureLogic.TryRegisterSale(clientId, request.AbbonitureId);
+        await _abbonitureLogic.RegisterSale(clientId, request.AbbonitureId);
         
-        if (result == false)
-            return BadRequest();
-
         return Ok();
     }
     
@@ -113,19 +114,16 @@ public class SailsTerminalController: BaseTerminalController
         
         var gym = await GetGymId();
 
-        if (await _trainingLogic.Exists(gym, trainerId))
+        if (await _trainingLogic.Exists(trainerId))
             return NotFound("No trainer founded.");
 
         if (await _trainingLogic.TrainerInGym(gym, trainerId) == false)
             return BadRequest("Trainer is not on work place.");
         
-        if (await _trainingLogic.TrainerIsFree(gym, trainerId))
+        if (await _trainingLogic.TrainerIsFree(trainerId))
             return BadRequest("Trainer is not free.");
         
-        var result = await _trainingLogic.TryRegisterTraining(trainerId, clientId, request.TotalHours);
-
-        if (result == false)
-            return BadRequest();
+        await _trainingLogic.RegisterTraining(trainerId, clientId, request.TotalHours);
 
         return Ok();
     }

@@ -12,8 +12,8 @@ public class Vacation : IIndexSearchable
    
    [AllowNull] public string? Reson { get; set; }
    
-   [Required] public DateOnly CreationDate { get; set; }
-   [Required] public uint DurationInDays { get; set; }
+   [Required] public DateOnly StartDate { get; set; }
+   [Required] public DateOnly EndDate { get; set; }
    
    [Required] public Guid EmployeeId { get; set; }
    public virtual Employee Employee { get; set; }

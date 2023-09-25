@@ -11,5 +11,10 @@ public class TimetableTypeConfiguration : IEntityTypeConfiguration<TimetableEnti
             .WithOne(e => e.Timetable)
             .HasForeignKey(e => e.TimetableId)
             .OnDelete(DeleteBehavior.SetNull);
+
+        builder.HasMany(t => t.DayGraphics)
+            .WithOne(g => g.Timetable)
+            .HasForeignKey(g => g.TimetableId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

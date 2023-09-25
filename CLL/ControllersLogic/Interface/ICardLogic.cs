@@ -1,5 +1,7 @@
 using BLL.Models;
+using BLL.Models.Card;
 using Common.Models;
+using Common.Models.PaginationView;
 
 namespace CLL.ControllersLogic.Interface;
 

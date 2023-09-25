@@ -8,8 +8,39 @@ namespace Common.Exceptions.General
 {
     public class NotFoundException : Exception
     {
-        public string NotFoundModel { get; set; } = null!;
+        public readonly string NotFoundModel;
+        public readonly Guid? Id;
 
-        public override string Message => $"{NotFoundModel} is not found";
+        public NotFoundException(string notFoundModel, Guid id)
+        {
+            NotFoundModel = notFoundModel;
+            Id = id;
+        }
+
+        public NotFoundException(string notFoundModel)
+        {
+            NotFoundModel = notFoundModel;
+        }
+        
+        public NotFoundException(Type notFoundModel, Guid id)
+        {
+            NotFoundModel = notFoundModel.Name;
+            Id = id;
+        }
+
+        public NotFoundException(Type notFoundModel)
+        {
+            NotFoundModel = notFoundModel.Name;
+        }
+
+        public override string Message => GetMessage();
+
+        private string GetMessage()
+        {
+            if (Id == null)
+                return $"{NotFoundModel} is not found.";
+
+            return $"{NotFoundModel} is not found by id({Id}).";
+        }
     }
 }

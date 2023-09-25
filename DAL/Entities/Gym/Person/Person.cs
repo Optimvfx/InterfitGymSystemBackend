@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using DAL.Entities.Gym.Person.Persons;
 using DAL.Entities.Interfaces;
 using DAL.Entities.Primary;
 
@@ -22,6 +23,7 @@ public class Person : IIndexSearchable
     [AllowNull] public GenderType? Gender { get; set; }
     [AllowNull] public byte[] Photo { get; set; }
     
+    public virtual ICollection<Visitation> Visitations { get; set; }
     public virtual ICollection<Card> Cards { get; set; }
     
     public enum GenderType

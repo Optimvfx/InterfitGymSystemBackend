@@ -6,7 +6,7 @@ using DAL.Entities.Interfaces;
 namespace DAL.Entities.Gym.SalesLogic;
 
 [Table("AbbonitureProfiles")]
-public class AbbonitureProfile : IIndexSearchable
+public class  AbbonitureProfile : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

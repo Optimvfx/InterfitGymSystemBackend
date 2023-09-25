@@ -14,10 +14,9 @@ public class Employee : Person
     [Required] public Guid PositionId { get; set; }
     public virtual Position Position { get; set; }
     
-    [AllowNull] public Guid? VacationId { get; set; }
-    public virtual Vacation Vacation { get; set; }
+    public virtual ICollection<Vacation> Vacations { get; set; }
     
-    [Required] public uint Wages { get; set; }
+    [Required] public uint SalaryPerHour { get; set; }
     
     [Required] public bool LeaveCompany { get; set; }
     

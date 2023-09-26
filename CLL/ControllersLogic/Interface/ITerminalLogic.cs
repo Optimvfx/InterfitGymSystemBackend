@@ -14,4 +14,4 @@ public interface ITerminalLogic
     Task<bool> IsEnabled(Guid id);
     Task Disable(Guid id);
     Task Enable(Guid id);
-}
+}   

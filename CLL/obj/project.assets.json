@@ -40,53 +40,6 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Laraue.EfCoreTriggers/1.3.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.8",
-          "Microsoft.EntityFrameworkCore.Relational": "5.0.8",
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.1/Laraue.EfCoreTriggers.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/Laraue.EfCoreTriggers.dll": {}
-        }
-      },
-      "Laraue.EfCoreTriggers.Common/7.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.0",
-          "Microsoft.EntityFrameworkCore.Relational": "7.0.0"
-        },
-        "compile": {
-          "lib/net6.0/Laraue.EfCoreTriggers.Common.dll": {
-            "related": ".runtimeconfig.json;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Laraue.EfCoreTriggers.Common.dll": {
-            "related": ".runtimeconfig.json;.xml"
-          }
-        }
-      },
-      "Laraue.EfCoreTriggers.SqlLite/7.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Laraue.EfCoreTriggers.Common": "7.1.1"
-        },
-        "compile": {
-          "lib/net6.0/Laraue.EfCoreTriggers.SqlLite.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Laraue.EfCoreTriggers.SqlLite.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.AspNet.Mvc/5.2.9": {
         "type": "package",
         "dependencies": {
@@ -609,15 +562,15 @@
           "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
-      "Newtonsoft.Json/13.0.1": {
+      "Newtonsoft.Json/5.0.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net45/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net45/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         }
@@ -1002,13 +955,11 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "Laraue.EfCoreTriggers": "1.3.2",
-          "Laraue.EfCoreTriggers.Common": "7.1.1",
-          "Laraue.EfCoreTriggers.SqlLite": "7.1.1",
           "Microsoft.EntityFrameworkCore": "7.0.3",
-          "Microsoft.EntityFrameworkCore.Relational": "7.0.3",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.3",
-          "SixLabors.ImageSharp": "3.0.2"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -1060,45 +1011,6 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
-      ]
-    },
-    "Laraue.EfCoreTriggers/1.3.2": {
-      "sha512": "njemvYf8e6oUnvGUBu5Zhtqz9NNHZRQo7eFH7HxeekVs+Fx8iy3UltL3A38i3ZfiPpCsvzE8kapwerWs47g80A==",
-      "type": "package",
-      "path": "laraue.efcoretriggers/1.3.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "laraue.efcoretriggers.1.3.2.nupkg.sha512",
-        "laraue.efcoretriggers.nuspec",
-        "lib/netstandard2.1/Laraue.EfCoreTriggers.dll"
-      ]
-    },
-    "Laraue.EfCoreTriggers.Common/7.1.1": {
-      "sha512": "saeEs+mr/6QX/mKCCm9WiftWg3J+bMF7EELMJlnADeyCqN6qf5sy8Cn2AUih26ssEAOF/+aFAYZQMASYSc/ldA==",
-      "type": "package",
-      "path": "laraue.efcoretriggers.common/7.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "laraue.efcoretriggers.common.7.1.1.nupkg.sha512",
-        "laraue.efcoretriggers.common.nuspec",
-        "lib/net6.0/Laraue.EfCoreTriggers.Common.dll",
-        "lib/net6.0/Laraue.EfCoreTriggers.Common.runtimeconfig.json",
-        "lib/net6.0/Laraue.EfCoreTriggers.Common.xml"
-      ]
-    },
-    "Laraue.EfCoreTriggers.SqlLite/7.1.1": {
-      "sha512": "4V6WuMBtbybvdDYJhe82NxKfnHFZnhTJ76Ee1/TvGX66effxIEPznR4tcMGsorUDcwxVu1ReVv7nCcZ9Cobhgw==",
-      "type": "package",
-      "path": "laraue.efcoretriggers.sqllite/7.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "laraue.efcoretriggers.sqllite.7.1.1.nupkg.sha512",
-        "laraue.efcoretriggers.sqllite.nuspec",
-        "lib/net6.0/Laraue.EfCoreTriggers.SqlLite.dll",
-        "lib/net6.0/Laraue.EfCoreTriggers.SqlLite.xml"
       ]
     },
     "Microsoft.AspNet.Mvc/5.2.9": {
@@ -2054,14 +1966,13 @@
         "microsoft.web.infrastructure.nuspec"
       ]
     },
-    "Newtonsoft.Json/13.0.1": {
-      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+    "Newtonsoft.Json/5.0.4": {
+      "sha512": "aooA15Gkq+lfhbtHRpu0f4t9yV4WNCqbTB1wTqlI/d6yftWR7kcyOckXrTnpBd04vpZefVwYlVBRpi3zcP0vlA==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.1",
+      "path": "newtonsoft.json/5.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -2070,15 +1981,14 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
-        "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.xml",
-        "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.1.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "packageIcon.png"
+        "lib/netcore45/Newtonsoft.Json.dll",
+        "lib/netcore45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl4+wp7+win8/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8/Newtonsoft.Json.xml",
+        "newtonsoft.json.5.0.4.nupkg.sha512",
+        "newtonsoft.json.nuspec"
       ]
     },
     "SixLabors.ImageSharp/3.0.2": {
@@ -2835,6 +2745,16 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Newtonsoft.Json 5.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Newtonsoft.Json",
       "targetGraphs": [
         "net7.0"
       ]

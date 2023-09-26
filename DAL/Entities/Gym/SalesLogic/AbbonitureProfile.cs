@@ -19,5 +19,5 @@ public class  AbbonitureProfile : IIndexSearchable
     
     [Required] public bool OnSale { get; set; }
     
-    public virtual ICollection<TradeTransaction> TradeTransactions { get; set; }
+    public virtual ICollection<Sale> TradeTransactions { get; set; }
 }

@@ -1,4 +1,4 @@
-namespace CLL.ControllersLogic;
+namespace BLL.Services.Database;
 
 public class TrainingService
 {

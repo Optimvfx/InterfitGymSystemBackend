@@ -1,6 +1,6 @@
 using DAL.Entities.Gym.Person;
 
-namespace CLL.ControllersLogic;
+namespace BLL.Services.Database;
 
 public class TrainerService
 {

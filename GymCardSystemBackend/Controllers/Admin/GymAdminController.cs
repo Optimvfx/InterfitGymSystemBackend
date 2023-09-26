@@ -43,7 +43,7 @@ public class GymAdminController : BaseAdminController
     public async Task<IActionResult> Get([GuidConvertible] string id)    
     {
         var guidId = DecryptGuid(id);
-        Result<GymVM> result = await _gymLogic.TryGet(guidId);
+        Result<GymVM> result = await _gymLogic.Get(guidId);
 
         if (result.IsFailure())
             return NotFound();

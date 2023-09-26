@@ -19,23 +19,18 @@ namespace GymCardSystemBackend.Controllers.Admin;
 [Route("api/admin/personal_manager")]
 public class PersonalManagerAdminController : BaseAdminController
 {
-    private readonly IPersonalManagerLogic _terminalLogic;
+    private readonly IPersonalManagerLogic _personalManagerLogic;
 
-    public PersonalManagerAdminController(IDataCoder<Guid, string> guidCryptor, IAuthLogic auth, IPersonalManagerLogic terminalLogic) : base(guidCryptor, auth)
+    public PersonalManagerAdminController(IDataCoder<Guid, string> guidCryptor, IAuthLogic auth, IPersonalManagerLogic personalManagerLogic) : base(guidCryptor, auth)
     {
-        _terminalLogic = terminalLogic;
+        _personalManagerLogic = personalManagerLogic;
     }
 
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
     public async Task<IActionResult> Create(PersonalManagerCreationRequest request)
     {
-        Result<Guid> result = await _terminalLogic.Create(request);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok( await _personalManagerLogic.Create(request));
     }
     
     [HttpGet("{id}")]
@@ -44,21 +39,20 @@ public class PersonalManagerAdminController : BaseAdminController
     public async Task<IActionResult> Get([GuidConvertible] string id)    
     {
         var guidId = DecryptGuid(id);
-        Result<PersonalManagerVM> result = await _terminalLogic.TryGet(guidId);
 
-        if (result.IsFailure())
-            return NotFound();
-
-        return Ok(result.Value);
+        if (await _personalManagerLogic.Exist(guidId) == false)
+            return NotFound("No personal manager by id founded.");
+        
+        return Ok(await _personalManagerLogic.Get(guidId));
     }
 
     [HttpGet("all/{page}")]
     [ProducesResponseType(typeof(IEnumerable<GymVM>), 200)]
     [ProducesResponseType(typeof(ValueRange<uint>), 200)]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> GetAll(uint? page= null)
+    public async Task<IActionResult> GetAll(uint? page = null)
     {
-        BasePaginationView<PersonalManagerVM> paginationView = await _terminalLogic.GetAll();
+        BasePaginationView<PersonalManagerVM> paginationView = await _personalManagerLogic.GetAll();
 
         return PaginationView(paginationView, page);
     }
@@ -70,13 +64,10 @@ public class PersonalManagerAdminController : BaseAdminController
     {
         var guidId = DecryptGuid(id);
         
-        if (await _terminalLogic.Exist(guidId) == false)
+        if (await _personalManagerLogic.Exist(guidId) == false)
             return NotFound("No personal manager by id founded.");
 
-        var result = await _terminalLogic.Edit(guidId, reqest);
-
-        if (result == false)
-            return BadRequest();
+        await _personalManagerLogic.Edit(guidId, reqest);
 
         return Ok();
     }
@@ -89,13 +80,13 @@ public class PersonalManagerAdminController : BaseAdminController
     {
         var guidId = DecryptGuid(id);
         
-        if (await _terminalLogic.Exist(guidId) == false)
+        if (await _personalManagerLogic.Exist(guidId) == false)
             return NotFound("No personal manager by id founded.");
 
-        if (await _terminalLogic.IsEnabled(guidId) == false)
+        if (await _personalManagerLogic.IsEnabled(guidId) == false)
             return BadRequest("Personal manager access is already disabled.");
 
-        await _terminalLogic.Disable(guidId);
+        await _personalManagerLogic.Disable(guidId);
         
         return Ok();
     }
@@ -108,13 +99,13 @@ public class PersonalManagerAdminController : BaseAdminController
     {
         var guidId = DecryptGuid(id);
         
-        if (await _terminalLogic.Exist(guidId) == false)
+        if (await _personalManagerLogic.Exist(guidId) == false)
             return NotFound("No personal manager by id founded.");
 
-        if (await _terminalLogic.IsEnabled(guidId))
+        if (await _personalManagerLogic.IsEnabled(guidId))
             return BadRequest("Personal manager access is already enabled.");
 
-        await _terminalLogic.Enable(guidId);
+        await _personalManagerLogic.Enable(guidId);
         
         return Ok();
     }

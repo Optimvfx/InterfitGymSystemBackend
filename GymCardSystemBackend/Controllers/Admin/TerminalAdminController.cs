@@ -44,7 +44,7 @@ public class TerminalAdminController : BaseAdminController
         if (await _terminalLogic.Exist(guidId) == false)
             return NotFound("No terminal by id founded.");
         
-       TerminalVM terminalVm = await _terminalLogic.TryGet(guidId);
+        TerminalVM terminalVm = await _terminalLogic.TryGet(guidId);
 
        return Ok(terminalVm);
     }

@@ -10,8 +10,8 @@ public interface IPersonalManagerLogic
     Task Enable(Guid id);
     Task<bool> Exist(Guid id);
     Task Disable(Guid id);
-    Task<bool> Edit(Guid id, PersonalManagerEditRequest reqest);
+    Task Edit(Guid id, PersonalManagerEditRequest reqest);
     Task<BasePaginationView<PersonalManagerVM>> GetAll();
-    Task<Result<PersonalManagerVM>> TryGet(Guid id);
-    Task<Result<Guid>> Create(PersonalManagerCreationRequest request);
+    Task<PersonalManagerVM> Get(Guid id);
+    Task<Guid> Create(PersonalManagerCreationRequest request);
 }

@@ -37,12 +37,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        Result<ExpensesVM> result = await _financeLogic.TryGetExpenses(dataRange);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        var result = await _financeLogic.GetExpenses(dataRange);
+        
+        return Ok(result);
     }
     
     [HttpGet("/total/earnings")]
@@ -55,12 +52,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        Result<EarningsVM> result = await _financeLogic.TryGetEarnings(dataRange);
+        var result = await _financeLogic.GetEarnings(dataRange);
 
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok(result);
     }
     
     [HttpGet("/procent/expenses")]
@@ -73,12 +67,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        Result<ProcentExpensesVM> result = await _financeLogic.TryGetProcentExpenses(dataRange);
+        var result = await _financeLogic.GetProcentExpenses(dataRange);
 
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok(result);
     }
     
     [HttpGet("/procent/earnings")]
@@ -91,12 +82,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        Result<ProcentEarningsVM> result = await _financeLogic.TryGetProcentEarnings(dataRange);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        var result = await _financeLogic.GetProcentEarnings(dataRange);
+        
+        return Ok(result);
     }
 
     #endregion
@@ -119,12 +107,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        var result = await _financeLogic.TryGetExpenses(dataRange, gymGuidId);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        var result = await _financeLogic.GetExpenses(dataRange, gymGuidId);
+        
+        return Ok(result);
     }
     
     [HttpGet("/total/gym/earnings")]
@@ -142,12 +127,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        var result = await _financeLogic.TryGetEarnings(dataRange, gymGuidId);
+        var result = await _financeLogic.GetEarnings(dataRange, gymGuidId);
 
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok(result);
     }
     
     [HttpGet("/procent/gym/expenses")]
@@ -165,12 +147,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        var result = await _financeLogic.TryGetProcentExpenses(dataRange, gymGuidId);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        var result = await _financeLogic.GetProcentExpenses(dataRange, gymGuidId);
+        
+        return Ok(result);
     }
     
     [HttpGet("/procent/gym/earnings")]
@@ -188,12 +167,9 @@ public class FinancialBusinessOwnerController : BaseAdminController
 
         var dataRange = new ValueRange<DateOnly>(from, to);
 
-        var result = await _financeLogic.TryGetProcentEarnings(dataRange, gymGuidId);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        var result = await _financeLogic.GetProcentEarnings(dataRange, gymGuidId);
+        
+        return Ok(result);
     }
 
     #endregion

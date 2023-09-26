@@ -6,7 +6,7 @@ using DAL.Entities.Interfaces;
 namespace DAL.Entities.Gym.SalesLogic;
 
 [Table("TradeTransactions")]
-public class TradeTransaction : IIndexSearchable
+public class Sale : IIndexSearchable
 {
     [Key] public Guid Id { get; set; }
     

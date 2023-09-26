@@ -20,7 +20,7 @@ namespace GymCardSystemBackend.Controllers.Admin;
 public class CardAdminController : BaseAdminController
 {
     private readonly ICardLogic _cardLogic;
-    private readonly IPesrsonLogic _pesrsonLogic;
+    private readonly IPersonLogic _personLogic;
     
     public CardAdminController(IDataCoder<Guid, string> guidCryptor, IAuthLogic auth, ICardLogic cardLogic) : base(guidCryptor, auth)
     {
@@ -168,7 +168,7 @@ public class CardAdminController : BaseAdminController
         if (await _cardLogic.CardIsTaked(guidId))
             return BadRequest("Card already linked.");
 
-        if (await _pesrsonLogic.Exists(personGuidId))
+        if (await _personLogic.Exists(personGuidId))
             return NotFound("Person not founded.");
             
         await _cardLogic.UnLink(guidId);

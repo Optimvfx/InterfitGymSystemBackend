@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Entities.Gym.SalesLogic;
 
-public class TradeTransactionEntityTypeConfiguration : IEntityTypeConfiguration<TradeTransaction>
+public class SaleEntityTypeConfiguration : IEntityTypeConfiguration<Sale>
 {
-    public void Configure(EntityTypeBuilder<TradeTransaction> builder)
+    public void Configure(EntityTypeBuilder<Sale> builder)
     {
         builder.HasOne(t => t.Client)
             .WithOne()
-            .HasForeignKey<TradeTransaction>(t => t.ClientId)
+            .HasForeignKey<Sale>(t => t.ClientId)
             .OnDelete(DeleteBehavior.NoAction);
         
         builder.HasOne(t => t.Gym)

@@ -3,6 +3,8 @@ using BLL.Models.Employee;
 using BLL.Models.Fininaces;
 using BLL.Services.Database;
 using BLL.Services.PaginationViewFactory;
+using BLL.Services.SalaryCalculator;
+using BLL.Services.WorkTimeCalculator;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
 using Common.Models;
@@ -20,16 +22,18 @@ public class SalaryLogic : ISalaryLogic
     private readonly EmployeeService _employeeService;
     private readonly GymService _gymService;
     
-    private readonly ISalaryCalculator _salaryCalculator;
-
+    private readonly BaseSalaryCalculator _salaryCalculator;
+    private readonly BaseWorkTimeCalculator _workTimeCalculator;
+    
     private readonly IPaginationViewFactory _paginationViewFactory;
     private readonly IMapper _mapper;
 
-    public SalaryLogic(EmployeeService employeeService, GymService gymService, ISalaryCalculator salaryCalculator, IPaginationViewFactory paginationViewFactory, IMapper mapper)
+    public SalaryLogic(EmployeeService employeeService, GymService gymService, BaseSalaryCalculator salaryCalculator, BaseWorkTimeCalculator workTimeCalculator, IPaginationViewFactory paginationViewFactory, IMapper mapper)
     {
         _employeeService = employeeService;
         _gymService = gymService;
         _salaryCalculator = salaryCalculator;
+        _workTimeCalculator = workTimeCalculator;
         _paginationViewFactory = paginationViewFactory;
         _mapper = mapper;
     }
@@ -51,9 +55,9 @@ public class SalaryLogic : ISalaryLogic
         return await GetAll(employees, dataRange);
     }
 
-    private async Task<BasePaginationView<SalaryVM>> GetAll(   IQueryable<Employee> employees, ValueRange<DateOnly> dataRange)
+    private async Task<BasePaginationView<SalaryVM>> GetAll(IQueryable<Employee> employees, ValueRange<DateOnly> dataRange)
     {
-        IQueryable<WorkTimeInfo> workTimeInfos = GetWorkTimeInfo(employees, dataRange);
+        IQueryable<WorkTimeInfo> workTimeInfos = _workTimeCalculator.GetWorkTimeInfo(employees, dataRange);
 
         var salarys = GetSalarys(workTimeInfos);
 
@@ -63,12 +67,6 @@ public class SalaryLogic : ISalaryLogic
     private IQueryable<SalaryVM> GetSalarys(IQueryable<WorkTimeInfo> workTimeInfos)
     {
         return workTimeInfos.Select(wti => GetSalaryVM(wti));
-    }
-    
-    private IQueryable<WorkTimeInfo> GetWorkTimeInfo(IQueryable<Employee> queryable, ValueRange<DateOnly> dataRange)
-    {
-        return queryable
-            .Select(e => CreateWorkTimeInfo(e, dataRange));
     }
 
     public SalaryVM GetSalaryVM(WorkTimeInfo workTimeInfo)
@@ -82,98 +80,5 @@ public class SalaryLogic : ISalaryLogic
         salaryVM.WorkTimeInfoVM = workTimeInfoVM;
 
         return salaryVM;
-    }
-
-    private WorkTimeInfo CreateWorkTimeInfo(Employee employee, ValueRange<DateOnly> dataRange)
-    {
-        var visitsInRange = employee.Visitations
-            .Where(v => dataRange.InRange(v.Date));
-        
-        var totalWorkTime = visitsInRange
-            .Sum(v => v.ExitTime.Ticks - v.EnterTime.Ticks);
-
-        var timetableWorkTimeTicks = visitsInRange
-            .Sum(v => GetTimetableTicks(v, employee));
-
-        var timetableWorkTime = TimeSpan.FromTicks(timetableWorkTimeTicks);
-        
-        var exceptedWorkTime = GetExceptedWorkTimeInTicks(employee, dataRange);
-
-        var vacationTime = GetVacationTime(employee, dataRange);
-        
-        return new WorkTimeInfo(employee, TimeSpan.FromTicks(totalWorkTime), 
-            timetableWorkTime, exceptedWorkTime,vacationTime);
-    }
-
-    private TimeSpan GetVacationTime(Employee employee, ValueRange<DateOnly> dataRange)
-    {
-       var vacations = employee.Vacations.Where(v => v.StartDate >= dataRange.Min && v.StartDate <= dataRange.Max);
-
-       var total = TimeSpan.Zero;
-       
-       for (var day = dataRange.Min; day <= dataRange.Max; day = day.AddDays(1))
-       {
-           if(vacations.Any(v => day >= v.StartDate && day <= v.EndDate) == false)
-               continue;
-           
-           var dayGraphic = GetExceptedDayGraphic(employee, day);
-           total += dayGraphic.StopWorkAt - dayGraphic.StartWorkAt;
-       }
-
-       return total;
-    }
-
-    private TimeSpan GetExceptedWorkTimeInTicks(Employee employee, ValueRange<DateOnly> dataRange) 
-    
-    {
-        var total = TimeSpan.Zero;
-        
-        for (var day = dataRange.Min; day <= dataRange.Max; day = day.AddDays(1))
-        {
-            var dayGraphic = GetDayGraphic(employee, day);
-            
-            if(dayGraphic == null)
-                continue;
-
-            total = total + dayGraphic.StopWorkAt.ToTimeSpan() - dayGraphic.StartWorkAt.ToTimeSpan();
-        }
-
-        return total;
-    }
-    
-    private bool InDayGraphicRange(Visitation visitation, DayGraphic dayGraphic)
-    {
-        return visitation.EnterTime <= dayGraphic.StopWorkAt
-               && dayGraphic.StartWorkAt <= visitation.ExitTime;
-    }
-
-    private long GetTimetableTicks(Visitation visitation, Employee employee)
-    {
-        const long NothingWorkTime = 0;
-        
-        var currentDayGraphic = GetDayGraphic(employee, visitation.Date);
-
-        if (currentDayGraphic == null || InDayGraphicRange(visitation, currentDayGraphic) == false)
-            return NothingWorkTime;
-
-        var intersectionStart = Math.Max(visitation.EnterTime.Ticks, currentDayGraphic.StartWorkAt.Ticks);
-        var intersectionEnd = Math.Min(visitation.ExitTime.Ticks, currentDayGraphic.StopWorkAt.Ticks);
-        var intersection = intersectionEnd - intersectionStart;
-
-        return intersection;
-    }
-
-    private DayGraphic? GetDayGraphic(Employee employee, DateOnly date)
-    {
-        if(employee.Vacations.Any(v => date >= v.StartDate && date <= v.EndDate))
-             return null;
-
-        return GetExceptedDayGraphic(employee, date);
-    }
-    
-    private DayGraphic? GetExceptedDayGraphic(Employee employee, DateOnly date)
-    {
-        return employee.Timetable.DayGraphics
-            .FirstOrDefault(g => date.DayOfWeek == g.DayOfWeek);
     }
 }

@@ -20,7 +20,7 @@ public class Gym
     public virtual ICollection<Card> Cards { get; set; }
     
     //Section of sales logic
-    public virtual ICollection<TradeTransaction> TradeTransactions { get; set; }
+    public virtual ICollection<Sale> TradeTransactions { get; set; }
     public virtual ICollection<Training> Trainings { get; set; }
     public virtual ICollection<Order> Orders { get; set; }
     

@@ -34,7 +34,7 @@ public class ApplicationDbContext : DbContext
     #region SalesLogic
 
     public DbSet<Training> Trainings => Set<Training>();
-    public DbSet<TradeTransaction> TradeTransactions => Set<TradeTransaction>();
+    public DbSet<Sale> TradeTransactions => Set<Sale>();
     public DbSet<OrderType> OrderTypes => Set<OrderType>();
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<AbbonitureProfile> AbbonitureProfiles => Set<AbbonitureProfile>();

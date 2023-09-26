@@ -1,7 +1,7 @@
 using BLL.Models.Terminal;
 using DAL.Entities.Access.AccessType;
 
-namespace CLL.ControllersLogic;
+namespace BLL.Services.Database;
 
 public class TerminalService
 {

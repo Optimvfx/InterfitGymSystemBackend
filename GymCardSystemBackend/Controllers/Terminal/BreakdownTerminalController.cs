@@ -33,7 +33,7 @@ public class BreakdownTerminalController : BaseTerminalController
         if (await _hardwareLogic.ExistsTrainingDevice(gym, request.TrainingDeviceId) == false)
             return NotFound("Hardware not founded");
 
-        if (await _hardwareLogic.ValidTrainingDeviceBreakdown(request.BreakdownId) == false)
+        if (await _hardwareLogic.ValidTrainingDeviceBreakdown(request.TrainingDeviceId, request.BreakdownId) == false)
             return BadRequest("Not valid breakdown.");
 
         var result = await _breakdownLogic.RegisterTrainingDeviceBreakdown(request);

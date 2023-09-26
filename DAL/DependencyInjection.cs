@@ -1,5 +1,4 @@
-﻿using Laraue.EfCoreTriggers.SqlLite.Extensions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -13,7 +12,6 @@ namespace DAL
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlite(connection);
-                options.UseSqlLiteTriggers();
                 
                 options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddFilter(level => level == logLevel)));
             }, ServiceLifetime.Transient);

@@ -1,14 +1,14 @@
 using DAL.Entities.Gym.Person;
 
-namespace CLL.ControllersLogic;
+namespace BLL.Services.SalaryCalculator;
 
 public class WorkTimeInfo
 {
-    public Employee Employee { get; set; }
-    public TimeSpan TotalWorkTime { get; set; }
-    public TimeSpan TimetableWorkTime { get; set; }
-    public TimeSpan ExceptedTimetableWorkTime { get; set; }
-    public TimeSpan PassedByVacationTime { get; set; }
+    public readonly Employee Employee;
+    public readonly TimeSpan TotalWorkTime;
+    public readonly TimeSpan TimetableWorkTime;
+    public readonly TimeSpan ExceptedTimetableWorkTime;
+    public readonly TimeSpan PassedByVacationTime;
     
     public TimeSpan Recycling => TotalWorkTime - TimetableWorkTime;
     public TimeSpan MissedWorkTime => ExceptedTimetableWorkTime - TimetableWorkTime;   

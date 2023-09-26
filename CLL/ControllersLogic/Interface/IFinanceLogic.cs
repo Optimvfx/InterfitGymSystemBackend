@@ -5,13 +5,13 @@ namespace CLL.ControllersLogic.Interface;
 
 public interface IFinanceLogic
 {
-    Task<Result<ProcentEarningsVM>> TryGetProcentEarnings(ValueRange<DateOnly> dataRange);
-    Task<Result<ProcentExpensesVM>> TryGetProcentExpenses(ValueRange<DateOnly> dataRange);
-    Task<Result<EarningsVM>> TryGetEarnings(ValueRange<DateOnly> dataRange);
-    Task<Result<ExpensesVM>> TryGetExpenses(ValueRange<DateOnly> dataRange);
+    Task<ProcentEarningsVM> GetProcentEarnings(ValueRange<DateOnly> dataRange);
+    Task<ProcentExpensesVM> GetProcentExpenses(ValueRange<DateOnly> dataRange);
+    Task<EarningsVM> GetEarnings(ValueRange<DateOnly> dataRange);
+    Task<ExpensesVM> GetExpenses(ValueRange<DateOnly> dataRange);
     
-    Task<Result<ProcentEarningsVM>> TryGetProcentEarnings(ValueRange<DateOnly> dataRange, Guid gymId);
-    Task<Result<ProcentExpensesVM>> TryGetProcentExpenses(ValueRange<DateOnly> dataRange,  Guid gymId);
-    Task<Result<EarningsVM>> TryGetEarnings(ValueRange<DateOnly> dataRange,  Guid gymId);
-    Task<Result<ExpensesVM>> TryGetExpenses(ValueRange<DateOnly> dataRange,  Guid gymId);
+    Task<ProcentEarningsVM> GetProcentEarnings(ValueRange<DateOnly> dataRange, Guid gymId);
+    Task<ProcentExpensesVM> GetProcentExpenses(ValueRange<DateOnly> dataRange,  Guid gymId);
+    Task<EarningsVM> GetEarnings(ValueRange<DateOnly> dataRange,  Guid gymId);
+    Task<ExpensesVM> GetExpenses(ValueRange<DateOnly> dataRange,  Guid gymId);
 }

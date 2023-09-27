@@ -29,12 +29,9 @@ public class GymAdminController : BaseAdminController
     [ProducesResponseType(typeof(Guid), 200)]
     public async Task<IActionResult> Create(GymCreationRequest request)
     {
-        Result<Guid> result = await _gymLogic.Create(request);
+       Guid result = await _gymLogic.Create(request);
 
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
@@ -43,12 +40,11 @@ public class GymAdminController : BaseAdminController
     public async Task<IActionResult> Get([GuidConvertible] string id)    
     {
         var guidId = DecryptGuid(id);
-        Result<GymVM> result = await _gymLogic.Get(guidId);
 
-        if (result.IsFailure())
+        if (await _gymLogic.Exist(guidId) == false)
             return NotFound();
 
-        return Ok(result.Value);
+        return Ok(await _gymLogic.Get(guidId));
     }
 
     [HttpGet("all/{page}")]
@@ -70,12 +66,9 @@ public class GymAdminController : BaseAdminController
         var guidId = DecryptGuid(id);
         
         if (await _gymLogic.Exist(guidId) == false)
-            return NotFound("No gym by id founded.");
+            return NotFound();
 
-        var result = await _gymLogic.Edit(guidId, reqest);
-
-        if (result == false)
-            return BadRequest();
+        await _gymLogic.Edit(guidId, reqest);
 
         return Ok();
     }

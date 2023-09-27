@@ -1,4 +1,5 @@
 using BLL.Models.Employee;
+using BLL.Models.Fininaces;
 using BLL.Services.DataCoder;
 using CLL.ControllersLogic.Interface;
 using CLL.ControllersLogic.Interface.AccessLogic;
@@ -29,12 +30,9 @@ public class EmployeePersonalManagerController : BaseAdminController
     [ProducesResponseType(400)]
     public async Task<IActionResult> Create(EmployeeCreationRequest employee)
     {
-        var result = await _employeeLogic.TryCreate(employee);
+        var result = await _employeeLogic.Create(employee);
 
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
@@ -44,12 +42,9 @@ public class EmployeePersonalManagerController : BaseAdminController
     {
         var guidId = DecryptGuid(id);
 
-        var result = await _employeeLogic.TryGet(guidId);
+        var result = await _employeeLogic.Get(guidId);
 
-        if (result.IsFailure())
-            return NotFound();
-
-        return Ok(result.Value);
+        return Ok(result);
     }
 
     [HttpGet("all/{page}")]
@@ -95,12 +90,16 @@ public class EmployeePersonalManagerController : BaseAdminController
     } 
 
     [HttpGet("top/work_time/{page}")]
-    [ProducesResponseType(typeof(IEnumerable<EmployeeVM>), 200)]
+    [ProducesResponseType(typeof(IEnumerable<WorkTimeInfoVM>), 200)]
     [ProducesResponseType(typeof(ValueRange<uint>), 200)]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> GetTopByWorkTime(uint? page = null, bool reversed = false, bool includeRecyclingWorks = false)
+    public async Task<IActionResult> GetTopByWorkTime(DateOnly max, DateOnly min, uint? page = null, bool reversed = false, bool includeRecyclingWorks = false)
     {
-        BasePaginationView<EmployeeVM> paginationView = await _employeeLogic.GetTopByWorkHours(reversed, includeRecyclingWorks);
+        if (min > max)
+            return BadRequest("Negative date is not possible.");
+        
+        var paginationView = await _employeeLogic.GetTopByWorkHours(reversed, 
+            includeRecyclingWorks, new ValueRange<DateOnly>(min, max));
 
         if (page == null)
             return Ok(paginationView.GetPagesRange());

@@ -49,7 +49,7 @@ public class VisitsTerminalController: BaseTerminalController
         if (await _visitsLogic.PersonCanVisitGym(personId) == false)
             return BadRequest("Person can not visit gym.");
         
-        var visitResult = await _visitsLogic.TryRegister(gymId,personId);   
+        var visitResult = await _visitsLogic.Register(gymId,personId);   
         return Ok(visitResult);
     }
     

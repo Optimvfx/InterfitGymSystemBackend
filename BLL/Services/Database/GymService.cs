@@ -56,4 +56,9 @@ public class GymService
     {
         throw new NotImplementedException();
     }
+
+    public IQueryable<Sale> GetAllSales()
+    {
+        throw new NotImplementedException();
+    }
 }

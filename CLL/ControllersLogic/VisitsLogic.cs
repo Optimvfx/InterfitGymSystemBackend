@@ -31,7 +31,7 @@ public class VisitsLogic : IVisitsLogic
         _mapper = mapper;
     }
 
-    public async Task<VisitationVM> TryRegister(Guid gymId, Guid personId)
+    public async Task<VisitationVM> Register(Guid gymId, Guid personId)
     {
         if (await _gymService.Any(gymId) == false)
             throw new NotFoundException(typeof(Gym), gymId);

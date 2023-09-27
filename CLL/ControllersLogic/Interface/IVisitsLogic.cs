@@ -4,7 +4,7 @@ namespace CLL.ControllersLogic.Interface;
 
 public interface IVisitsLogic
 {
-    Task<VisitationVM> TryRegister(Guid gymId, Guid personId);
+    Task<VisitationVM> Register(Guid gymId, Guid personId);
     Task<VisitationVM> ContinumeVisit(Guid gymId, Guid personId);
     Task Exit(Guid gymId, Guid personId);
     

@@ -19,6 +19,8 @@ public class SalaryVM
 
 public class WorkTimeInfoVM
 {
+    public EmployeeVM Employee { get; set; }
+    
     public TimeSpan TotalWorkTime { get; set; }
     public TimeSpan TimetableWorkTime { get; set; }
     public TimeSpan ExceptedTimetableWorkTime { get; set; }

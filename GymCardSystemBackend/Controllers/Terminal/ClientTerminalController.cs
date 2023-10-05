@@ -30,12 +30,9 @@ public class ClientTerminalController : BaseAdminController
     [ProducesResponseType(400)]
     public async Task<IActionResult> CreateClient(CreateClientRequest request)
     {
-        Result<Guid> result = await _clientLogic.Create(request);
-
-        if (result.IsFailure())
-            return BadRequest();
-
-        return Ok(result.Value);
+        var newId = await _clientLogic.Create(request);
+        
+        return Ok(newId);
     }
     
     [HttpPut]

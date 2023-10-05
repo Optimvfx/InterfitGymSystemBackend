@@ -5,6 +5,7 @@ using BLL.Services.SalaryCalculator;
 using BLL.Services.WorkTimeCalculator;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using DAL.Entities.Gym;
 using DAL.Entities.Gym.Person;
@@ -24,7 +25,19 @@ public class FinanceLogic : IFinanceLogic
     private readonly SaleService _saleService;
     
     private readonly IMapper _mapper;
-    
+
+    public FinanceLogic(BaseSalaryCalculator baseSalaryCalculator, BaseWorkTimeCalculator workTimeCalculator, IFinanceVMConvertor financeProcentConvertor, OrderService orderService, EmployeeService employeeService, GymService gymService, SaleService saleService, IMapper mapper)
+    {
+        _baseSalaryCalculator = baseSalaryCalculator;
+        _workTimeCalculator = workTimeCalculator;
+        _financeProcentConvertor = financeProcentConvertor;
+        _orderService = orderService;
+        _employeeService = employeeService;
+        _gymService = gymService;
+        _saleService = saleService;
+        _mapper = mapper;
+    }
+
     public async Task<ProcentEarningsVM> GetProcentEarnings(ValueRange<DateOnly> dataRange)
     {
         var earnings = GetAllEarnings(dataRange);
@@ -111,7 +124,7 @@ public class FinanceLogic : IFinanceLogic
     private async Task<Earnings> GetAllEarnings(ValueRange<DateOnly> dataRange, Guid gymId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
         
         var sales = GetSalas(_gymService.GetAllSales(), dataRange);
         
@@ -126,7 +139,7 @@ public class FinanceLogic : IFinanceLogic
     private async Task<Expenses> GetAllExpenses(ValueRange<DateOnly> dataRange, Guid gymId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
         
         var salarys = GetSalarys( _gymService.GetAllEmployee(gymId), dataRange);
         var orders = GetOrders( _gymService.GetAllOrders(gymId), dataRange);
@@ -164,7 +177,7 @@ public class FinanceLogic : IFinanceLogic
     }
 }
 
-internal interface IFinanceVMConvertor
+public interface IFinanceVMConvertor
 {
     ProcentEarningsVM ToProcent(EarningsVM getVm);
     

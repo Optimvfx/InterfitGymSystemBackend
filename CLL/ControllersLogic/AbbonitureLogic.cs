@@ -4,6 +4,7 @@ using BLL.Services.Database;
 using BLL.Services.PaginationViewFactory;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using Common.Models.PaginationView;
 using DAL.Entities.Gym.Person;
@@ -45,7 +46,7 @@ public class AbbonitureLogic : IAbbonitureLogic
     public async Task<bool> ClientHaveActiveAbboniture(Guid clientId)
     {
         if (await _clientService.Any(clientId) == false)
-            throw new NotFoundException(typeof(Client), clientId);
+            throw new ValueNotFoundByIdException(typeof(Client), clientId);
 
         return await _clientService.HaveActiveAbboniture(clientId);
     }
@@ -56,10 +57,10 @@ public class AbbonitureLogic : IAbbonitureLogic
             throw new AlreadyExistException(typeof(AbbonitureProfile));
         
         if (await _clientService.Any(clientId) == false)
-            throw new NotFoundException(typeof(Client), clientId);
+            throw new ValueNotFoundByIdException(typeof(Client), clientId);
         
         if (await _abbonitureProfileService.Any(abbonitureId) == false)
-            throw new NotFoundException(typeof(AbbonitureProfile), abbonitureId);
+            throw new ValueNotFoundByIdException(typeof(AbbonitureProfile), abbonitureId);
 
         await _saleService.Create(clientId, abbonitureId);
     }
@@ -72,7 +73,7 @@ public class AbbonitureLogic : IAbbonitureLogic
     public async Task Edit(Guid id, EditAbbonitureProfileRequest request)
     {
         if (await _abbonitureProfileService.Any(id) == false)
-            throw new NotFoundException(typeof(AbbonitureProfile),id);
+            throw new ValueNotFoundByIdException(typeof(AbbonitureProfile),id);
 
         await _abbonitureProfileService.Edit(id, request);
     }
@@ -80,7 +81,7 @@ public class AbbonitureLogic : IAbbonitureLogic
     public async Task Delete(Guid id)
     {
         if (await _abbonitureProfileService.Any(id) == false)
-            throw new NotFoundException(typeof(AbbonitureProfile),id);
+            throw new ValueNotFoundByIdException(typeof(AbbonitureProfile),id);
 
         await _abbonitureProfileService.Delete(id);
     }

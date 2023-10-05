@@ -1,6 +1,7 @@
 using BLL.Services.Database;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using DAL.Entities.Gym.Hardware;
 
 namespace CLL.ControllersLogic;
@@ -27,15 +28,7 @@ public class HardwareLogic : IHardwareLogic
 
         return trainingDevice.GymId == gymId;
     }
-
-    public async Task<bool> ValidTrainingDeviceBreakdown(Guid deviceId, Guid breakdownId)
-    {
-        if (await _trainingDeviceService.Any(deviceId) == false)
-            throw new NotFoundException(typeof(TrainingDevice), deviceId);
-
-        return await _trainingDeviceService.ValidBreakdown(breakdownId);
-    }
-
+    
     public async Task<bool> ExistsConsumable(Guid gymId, Guid id)
     {
         if (await _consumableService.Any(id) == false)
@@ -82,7 +75,12 @@ public class TrainingDeviceService
         throw new NotImplementedException();
     }
 
-    public async Task<bool> ValidBreakdown(Guid id)
+    public async Task<Guid> GetTypeId(Guid requestTrainingDeviceId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<bool> ValidBreakdown(Guid trainingDeviceTypeId, Guid requestBreakdownTypeId)
     {
         throw new NotImplementedException();
     }

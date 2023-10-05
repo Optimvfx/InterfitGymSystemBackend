@@ -3,6 +3,7 @@ using BLL.Models.PersonalManager;
 using BLL.Services.PaginationViewFactory;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using Common.Models.PaginationView;
 
@@ -26,7 +27,7 @@ public class PersonManagerLogic : IPersonalManagerLogic
     public async Task<bool> IsEnabled(Guid id)
     {
         if (await Exist(id) == false)
-            throw new NotFoundException(typeof(PersonalManager), id);
+            throw new ValueNotFoundByIdException(typeof(PersonalManager), id);
         
         return await _personalManagerService.IsEnabled(id);
     }
@@ -55,7 +56,7 @@ public class PersonManagerLogic : IPersonalManagerLogic
     public async Task Edit(Guid id, PersonalManagerEditRequest reqest)
     {
         if (await Exist(id) == false)
-            throw new NotFoundException(typeof(PersonalManager), id);
+            throw new ValueNotFoundByIdException(typeof(PersonalManager), id);
 
         await _personalManagerService.Edit(id, reqest);
     }
@@ -70,7 +71,7 @@ public class PersonManagerLogic : IPersonalManagerLogic
     public async Task<PersonalManagerVM> Get(Guid id)
     {
         if (await Exist(id) == false)
-            throw new NotFoundException(typeof(PersonalManager), id);
+            throw new ValueNotFoundByIdException(typeof(PersonalManager), id);
 
         return _mapper.Map<PersonalManagerVM>(
             await _personalManagerService.Get(id));

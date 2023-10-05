@@ -5,6 +5,7 @@ using BLL.Services.PaginationViewFactory;
 using BLL.Services.VisitationResultFactory;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using DAL.Entities.Gym;
 using DAL.Entities.Gym.Person;
 using DAL.Entities.Gym.SalesLogic;
@@ -34,10 +35,10 @@ public class VisitsLogic : IVisitsLogic
     public async Task<VisitationVM> Register(Guid gymId, Guid personId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
 
         if (await _personService.Any(personId) == false)
-            throw new NotFoundException(typeof(Person), personId);
+            throw new ValueNotFoundByIdException(typeof(Person), personId);
         
         if (await PersonInGym(personId))
             throw new ArgumentException("Person in gym already.");
@@ -52,10 +53,10 @@ public class VisitsLogic : IVisitsLogic
     public async Task<VisitationVM> ContinumeVisit(Guid gymId, Guid personId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
 
         if (await _personService.Any(personId) == false)
-            throw new NotFoundException(typeof(Person), personId);
+            throw new ValueNotFoundByIdException(typeof(Person), personId);
         
         if (await PersonInGym(gymId, personId) == false)
             throw new ArgumentException("Person not in gym.");
@@ -66,10 +67,10 @@ public class VisitsLogic : IVisitsLogic
     public async Task Exit(Guid gymId, Guid personId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
 
         if (await _personService.Any(personId) == false)
-            throw new NotFoundException(typeof(Person), personId);
+            throw new ValueNotFoundByIdException(typeof(Person), personId);
         
         if (await PersonInGym(gymId, personId) == false)
             throw new ArgumentException("Person not in gym.");
@@ -80,10 +81,10 @@ public class VisitsLogic : IVisitsLogic
     public async Task<bool> PersonInGym(Guid gymId, Guid personId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
 
         if (await _personService.Any(personId) == false)
-            throw new NotFoundException(typeof(Person), personId);
+            throw new ValueNotFoundByIdException(typeof(Person), personId);
 
         return _visitationService.PersonInGym(gymId, personId);
     }
@@ -91,7 +92,7 @@ public class VisitsLogic : IVisitsLogic
     public async Task<bool> PersonInGym(Guid personId)
     {
         if (await _personService.Any(personId) == false)
-            throw new NotFoundException(typeof(Person), personId);
+            throw new ValueNotFoundByIdException(typeof(Person), personId);
 
         return _visitationService.PersonInGym(personId);
     }
@@ -99,7 +100,7 @@ public class VisitsLogic : IVisitsLogic
     public async Task<bool> PersonCanVisitGym(Guid personId)
     {
         if (await _personService.Any(personId) == false)
-            throw new NotFoundException(typeof(Person), personId);
+            throw new ValueNotFoundByIdException(typeof(Person), personId);
 
         return _abbonitureService.HasActiveAbboniture(personId);
     }

@@ -7,7 +7,12 @@ namespace CLL.ControllersLogic;
 public class OrderLogic : IOrderLogic
 {
     private readonly OrderService _orderService;
-    
+
+    public OrderLogic(OrderService orderService)
+    {
+        _orderService = orderService;
+    }
+
     public async Task<bool> TryRegister(OrderRegistrationRequest request)
     {
         await _orderService.Register(request);

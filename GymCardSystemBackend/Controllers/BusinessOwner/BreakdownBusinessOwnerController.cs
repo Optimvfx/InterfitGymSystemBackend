@@ -64,9 +64,6 @@ public class BreakdownBusinessOwnerController : BaseAdminController
     [ProducesResponseType(404)]
     public async Task<IActionResult> RegisterTrainingDeviceRepair(TrainingDeviceRepairRegisterRequest request)
     {
-        if (await _breakdownLogic.AnyTrainingDevice(request.HardwareId) == false)
-            return NotFound("Not found hardware");
-
         var result = await _breakdownLogic.RegisterTrainingDeviceRepair(request);
 
         if (result == false)
@@ -81,9 +78,6 @@ public class BreakdownBusinessOwnerController : BaseAdminController
     [ProducesResponseType(404)]
     public async Task<IActionResult> RegisterTechnicalHardwareRepair(TechnicalHardwareRepairRegisterRequest request)
     {
-        if (await _breakdownLogic.AnyTechnicalHardware(request.HardwareId) == false)
-            return NotFound("Not found hardware");
-
         var result = await _breakdownLogic.RegisterTechnicalHardwareRepair(request);
 
         if (result == false)

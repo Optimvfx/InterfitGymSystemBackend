@@ -6,6 +6,7 @@ using BLL.Services.SalaryCalculator;
 using BLL.Services.WorkTimeCalculator;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using Common.Models.PaginationView;
 using DAL.Entities.Gym;
@@ -37,7 +38,7 @@ public class EmployeeLogic : IEmployeeLogic
     public async Task<EmployeeVM> Get(Guid id)
     {
         if (await _employeeService.Any(id) == false)
-            throw new NotFoundException(typeof(Employee), id);
+            throw new ValueNotFoundByIdException(typeof(Employee), id);
 
         return await _employeeService.Get(id);
     }
@@ -52,7 +53,7 @@ public class EmployeeLogic : IEmployeeLogic
     public async Task<BasePaginationView<EmployeeVM>> GetAllInGym(Guid gymId)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
         
         var all = _gymService.GetAllEmployee(gymId);
 
@@ -100,7 +101,7 @@ public class EmployeeLogic : IEmployeeLogic
     public async Task Edit(Guid id, EmployeeEditRequest reqest)
     {
         if (await _employeeService.Any(id) == false)
-            throw new NotFoundException(typeof(Employee), id);
+            throw new ValueNotFoundByIdException(typeof(Employee), id);
 
         await _employeeService.Edit(reqest);
     }

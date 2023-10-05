@@ -1,7 +1,8 @@
 using BLL.Services.DataCoder;
 using CLL.ControllersLogic.Interface.AccessLogic;
 using Common.Convertors;
-using Common.Exceptions.User;
+using Common.Exceptions;
+using DAL.Entities.Access.AccessType;
 using GymCardSystemBackend.Consts;
 
 namespace GymCardSystemBackend.Controllers._Base;
@@ -23,8 +24,10 @@ public abstract class BaseAdminController : BaseController
         {
             if (await _auth.AccessIsAdmin(id))
                 return id;
+            
+            throw new InvalidUserIdException(typeof(ApiAdministrator), id);
         }
-
-        throw new InvalidUserIdException();
+        
+        throw new InvalidUserIdException(typeof(ApiAdministrator));
     }
 }

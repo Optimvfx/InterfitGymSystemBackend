@@ -1,6 +1,8 @@
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Extensions;
 using DAL;
+using DAL.Entities.Access;
 using DAL.Entities.Access.AccessType;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +25,7 @@ public class AuthService
     public async Task<Guid> GetAccessByApiKey(string key)
     {
         if (!await AnyAccessByApiKey(key))
-            throw new NotFoundException("Key");
+            throw new ValueNotFoundByKeyException(typeof(Access), key);
             
         var apiKey = await _db.Keys  
             .Include(k => k.Access)
@@ -45,7 +47,7 @@ public class AuthService
     public async Task<Terminal> GetTerminalByAccess(Guid id)
     {
         if (await AnyTerminalByAccess(id) == false)
-            throw new NotFoundException(typeof(Terminal), id);
+            throw new ValueNotFoundByIdException(typeof(Terminal), id);
 
         return await _db.Terminals
             .AsNoTracking()

@@ -4,6 +4,7 @@ using BLL.Services.PaginationViewFactory;
 using BLL.Services.TimeService;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using Common.Models.PaginationView;
 using DAL.Entities.Gym;
@@ -41,7 +42,7 @@ public class TrainingLogic : ITrainingLogic
     public async Task<bool> TrainerIsFree(Guid trainerId)
     {
         if (await Exists(trainerId) == false)
-            throw new NotFoundException(typeof(Trainer), trainerId);
+            throw new ValueNotFoundByIdException(typeof(Trainer), trainerId);
         
         return await _trainerService.IsFree(trainerId);
     }
@@ -52,7 +53,7 @@ public class TrainingLogic : ITrainingLogic
             throw new ArgumentException("Trainer is not free.");
 
         if (await _clientService.Any(clientId) == false)
-            throw new NotFoundException(typeof(Client), clientId);
+            throw new ValueNotFoundByIdException(typeof(Client), clientId);
 
         if (await _clientService.HaveActiveAbboniture(clientId) == false)
             throw new ArgumentException("Client not have abboniture.");
@@ -78,10 +79,10 @@ public class TrainingLogic : ITrainingLogic
     public async Task<bool> TrainerInGym(Guid gym, Guid trainerId)
     {
         if(await _gymService.Any(gym) == false)
-            throw new NotFoundException(typeof(Gym), trainerId);
+            throw new ValueNotFoundByIdException(typeof(Gym), trainerId);
         
         if (await Exists(trainerId) == false)
-            throw new NotFoundException(typeof(Trainer), trainerId);
+            throw new ValueNotFoundByIdException(typeof(Trainer), trainerId);
 
         return await _visitationService.TrainerInGym(gym, trainerId);
     }

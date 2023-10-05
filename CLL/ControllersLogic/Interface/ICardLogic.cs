@@ -9,13 +9,13 @@ public interface ICardLogic
 {
     Task<Result<Guid>> GetCardId(byte[] cardCode);
     
-    Task<Result<Guid>> TryGetPersonIdByCardCode(Guid cardId);
-    Task<Result<Guid>> TryGetClientIdByCard(Guid requestClientCardId);
-    Task<Result<Guid>> TryGetTrainerIdByCardCode(Guid requestTrainerCardId);
-    Task<bool> CardExistsInGym(Guid gym, Guid cardId);
+    Task<Result<Guid>> TryGetPersonIdByCardCode(Guid id);
+    Task<Result<Guid>> TryGetClientIdByCard(Guid id);
+    Task<Result<Guid>> TryGetTrainerIdByCardCode(Guid id);
+    Task<bool> CardExistsInGym(Guid gymId, Guid cardId);
     Task<bool> CardIsTaked(Guid id);
-    Task<bool> CardIsTakedByPerson(Guid id, Guid personId);
-    Task Link(Guid cardId, Guid clientId);
+    Task<bool> CardIsTakedByPerson(Guid id, Guid ownerId);
+    Task Link(Guid cardId, Guid personId);
     Task UnLink(Guid cardId);
     Task<Result<Guid>> Create(CardCreationRequest request);
     Task<Result<CardVM>> TryGet(Guid id);

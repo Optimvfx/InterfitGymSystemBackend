@@ -4,6 +4,7 @@ using BLL.Services.Database;
 using BLL.Services.PaginationViewFactory;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using Common.Models.PaginationView;
 using DAL.Entities.Access.AccessType;
@@ -33,10 +34,10 @@ public class TerminalLogic : ITerminalLogic
     public async Task<Guid> Create(TerminalCreationRequest terminal)
     {
         if (await _gymService.Any(terminal.GymId) == false)
-            throw new NotFoundException(typeof(Gym), terminal.GymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), terminal.GymId);
 
         if (await _terminalAdministratorService.Any(terminal.AdministratorId) == false)
-            throw new NotFoundException(typeof(TerminalAdministrator), terminal.AdministratorId);
+            throw new ValueNotFoundByIdException(typeof(TerminalAdministrator), terminal.AdministratorId);
 
         return await _terminalService.Create(terminal);
     }
@@ -44,7 +45,7 @@ public class TerminalLogic : ITerminalLogic
     public async Task<TerminalVM> TryGet(Guid id)
     {
         if (await _terminalService.Any(id) == false)
-            throw new NotFoundException(typeof(Terminal), id);
+            throw new ValueNotFoundByIdException(typeof(Terminal), id);
 
         var terminal = await _terminalService.Get(id);
         
@@ -61,7 +62,7 @@ public class TerminalLogic : ITerminalLogic
     public async Task Edit(Guid id, TerminalEditRequest reqest)
     {
         if (await _terminalService.Any(id) == false)
-            throw new NotFoundException(typeof(Terminal), id);
+            throw new ValueNotFoundByIdException(typeof(Terminal), id);
 
         await _terminalService.Edit(id, reqest);
     }
@@ -74,7 +75,7 @@ public class TerminalLogic : ITerminalLogic
     public async Task<bool> IsEnabled(Guid id)
     {
         if (await _terminalService.Any(id) == false)
-            throw new NotFoundException(typeof(Terminal), id);
+            throw new ValueNotFoundByIdException(typeof(Terminal), id);
         
         return await _terminalService.Enabled(id);
     }
@@ -82,7 +83,7 @@ public class TerminalLogic : ITerminalLogic
     public async Task Disable(Guid id)
     {
         if (await _terminalService.Any(id) == false)
-            throw new NotFoundException(typeof(Terminal), id);
+            throw new ValueNotFoundByIdException(typeof(Terminal), id);
 
         await _terminalService.Disable(id);
     }
@@ -90,7 +91,7 @@ public class TerminalLogic : ITerminalLogic
     public async Task Enable(Guid id)
     {
         if (await _terminalService.Any(id) == false)
-            throw new NotFoundException(typeof(Terminal), id);
+            throw new ValueNotFoundByIdException(typeof(Terminal), id);
         
         await _terminalService.Enable(id);
     }

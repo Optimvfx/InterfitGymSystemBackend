@@ -7,6 +7,7 @@ using BLL.Services.SalaryCalculator;
 using BLL.Services.WorkTimeCalculator;
 using CLL.ControllersLogic.Interface;
 using Common.Exceptions.General;
+using Common.Exceptions.General.NotFoundException;
 using Common.Models;
 using Common.Models.PaginationView;
 using DAL.Entities.Gym;
@@ -48,7 +49,7 @@ public class SalaryLogic : ISalaryLogic
     public async Task<BasePaginationView<SalaryVM>> GetAllByGym(Guid gymId, ValueRange<DateOnly> dataRange)
     {
         if (await _gymService.Any(gymId) == false)
-            throw new NotFoundException(typeof(Gym), gymId);
+            throw new ValueNotFoundByIdException(typeof(Gym), gymId);
         
         IQueryable<Employee> employees = _gymService.GetAllEmployee(gymId);
 
